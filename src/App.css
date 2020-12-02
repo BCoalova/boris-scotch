@@ -15,6 +15,7 @@ nav {
 }
 nav .brand {
   padding: .8rem;
+  font-size: 2rem;
 }
 nav ul {
   display: flex;
@@ -27,8 +28,14 @@ nav ul li {
   display: flex;
   flex-direction: row;
   padding: .8rem;
+  align-items: center;
+  font-size: 1.2rem;
 }
 nav a {
   text-decoration: none;
   color: white;
+  transition: color .2s ease-in-out;
+}
+nav a:hover {
+  color: #0080B8;
 }

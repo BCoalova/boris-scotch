@@ -4,7 +4,7 @@ let Appnavbar = () =>
 <header>
     <nav>
         <div className="brand">
-            <a href="">YaEstá!</a>
+            <a href="">MRace</a>
         </div>
         <ul>
             <li><a href="">Remeras</a></li>
