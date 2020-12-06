@@ -1,0 +1,9 @@
+nav ul svg {
+    width: 4rem;
+}
+nav ul svg path {
+    fill:white;
+}
+nav ul svg .cruz {
+    display: none;
+}

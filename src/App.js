@@ -1,9 +1,20 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Appnavbar from './componentes/navbar';
+import Appnavbar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 
-let App = () => <Appnavbar />
-
+const App = () => {
+    return(
+        <>
+            <Appnavbar 
+            brand="MRace" 
+            />
+            <ItemListContainer 
+                mensaje="Bienvenido a nuestra tienda, todavía la estamos completando" 
+            />
+        </>
+    )
+}
 
 export default App;
