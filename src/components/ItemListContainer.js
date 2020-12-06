@@ -3,7 +3,9 @@ import './ItemListContainer.css'
 
 const ItemListContainer = ({mensaje}) => {
     return(
-        <p className="itemlistcontainer">{mensaje}</p>
+        <div className="min_100_vh">
+            <h1 className="itemlistcontainer">{mensaje}</h1>
+        </div>
     )
 }
 

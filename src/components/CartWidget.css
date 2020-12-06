@@ -1,9 +1,13 @@
-nav ul svg {
-    width: 4rem;
+.cartWidget {
+    padding:.5rem;
+    margin-left: .5rem;
 }
-nav ul svg path {
+nav .cartWidget svg {
+    width: 3rem;
+}
+nav svg path {
     fill:white;
 }
-nav ul svg .cruz {
+nav svg .cruz {
     display: none;
 }
