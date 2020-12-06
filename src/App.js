@@ -9,9 +9,7 @@ import AppFooter from './components/AppFooter';
 const App = () => {
     return(
         <>
-            <Appnavbar 
-            brand="MRace" 
-            />
+            <Appnavbar />
             <ItemListContainer 
                 mensaje="Bienvenido a nuestra tienda, todavía la estamos completando" 
             />
