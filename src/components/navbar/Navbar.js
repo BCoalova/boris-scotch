@@ -6,10 +6,10 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 //COMPONENTS
-import Brand from './Brand';
-import CartWidget from "./CartWidget";
+import Brand from './brand/Brand';
+import CartWidget from "./cartWidget/CartWidget";
 //CSS
-import './NavBar.css';
+import './navBar.css';
 
 class AppNavBar extends React.Component {
     constructor() {

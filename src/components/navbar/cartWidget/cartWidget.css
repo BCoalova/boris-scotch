@@ -11,3 +11,9 @@ nav svg path {
 nav svg .cruz {
     display: none;
 }
+nav svg .cartInner {
+    display: block;
+}
+nav svg.close .cartInner {
+    display:none;
+}

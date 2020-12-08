@@ -1,9 +1,19 @@
-import React from 'react';
-import './CartWidget.css';
+import React/* , { useState } */ from 'react';
+import './cartWidget.css';
 
 const CartWidget = () => {
+
+    /* const [isActive, setActive] = useState("false");
+
+    const handleToggle = () => {
+        setActive(!isActive);
+    }; */
+
     return(
-        <div className="cartWidget">
+        <div 
+            className="cartWidget"
+            /* onClick={handleToggle} */
+        >
             <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0"
@@ -12,19 +22,20 @@ const CartWidget = () => {
             version="1.1"
             viewBox="0 0 521.3 596.4"
             xmlSpace="preserve"
+            /* className={isActive ? "close" : null} */
             >
-                <g>
-                    <path
-                        d="M188.2 260.1l17.4 121.7h34L257 260.1h-68.8z"
-                        className="st0"
-                    ></path>
+                <g className="cartInner">
                     <path
                         d="M86.6 260.1L114 381.9h45l-17.4-121.7-55-.1z"
-                        className="st1"
+                        className="cartInner_left"
+                    ></path>
+                    <path
+                        d="M188.2 260.1l17.4 121.7h34L257 260.1h-68.8z"
+                        className="cartInner_center"
                     ></path>
                     <path
                         d="M286.2 381.9H334l24.6-121.7h-55l-17.4 121.7z"
-                        className="st2"
+                        className="cartInner_right"
                     ></path>
                 </g>
                 <path
@@ -34,11 +45,11 @@ const CartWidget = () => {
                 <g className="cruz">
                     <path
                         d="M299.1 324.1c0-42.2-34.3-76.4-76.4-76.4s-76.5 34.3-76.5 76.4 34.3 76.4 76.5 76.4 76.4-34.3 76.4-76.4zm-20 0c0 31.1-25.3 56.4-56.4 56.4s-56.5-25.3-56.5-56.4 25.3-56.4 56.5-56.4c31-.1 56.4 25.2 56.4 56.4z"
-                        className="st0"
+                        className="cruzCirculo"
                     ></path>
                     <path
                         d="M247.6 349c3.9-3.9 3.9-10.2 0-14.1l-10.8-10.8 10.8-10.8c3.9-3.9 3.9-10.2 0-14.1s-10.2-3.9-14.1 0L222.7 310l-10.8-10.8c-3.9-3.9-10.2-3.9-14.1 0s-3.9 10.2 0 14.1l10.8 10.8-10.8 10.8c-3.9 3.9-3.9 10.2 0 14.1 2 2 4.5 2.9 7.1 2.9s5.1-1 7.1-2.9l10.8-10.8 10.8 10.8c2 2 4.5 2.9 7.1 2.9s4.9-.9 6.9-2.9z"
-                        className="st0"
+                        className="cruzCruz"
                     ></path>
                 </g>
             </svg>

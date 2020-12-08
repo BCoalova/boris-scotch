@@ -1,7 +1,7 @@
 import React from 'react';
-import './AppFooter.css';
+import './footer.css';
 
-const AppFooter = ({copy}) => {
+const Footer = ({copy}) => {
     return (
         <footer>
             <p>{copy}</p>
@@ -9,4 +9,4 @@ const AppFooter = ({copy}) => {
     )
 }
 
-export default AppFooter
+export default Footer
