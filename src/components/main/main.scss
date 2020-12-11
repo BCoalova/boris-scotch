@@ -1,12 +1,9 @@
 .min_100_vh {
     min-height: calc(100vh - 174.91px);
+    padding: 2rem 0;
     margin-top: 86.91px; 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.itemlistcontainer {
-    width: 85%;
-    text-align: center;
 }

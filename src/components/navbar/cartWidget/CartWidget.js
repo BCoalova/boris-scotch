@@ -1,18 +1,12 @@
-import React/* , { useState } */ from 'react';
-import './cartWidget.css';
+import React from 'react';
+import './cartWidget.scss';
 
 const CartWidget = () => {
 
-    /* const [isActive, setActive] = useState("false");
-
-    const handleToggle = () => {
-        setActive(!isActive);
-    }; */
 
     return(
         <div 
             className="cartWidget"
-            /* onClick={handleToggle} */
         >
             <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +16,6 @@ const CartWidget = () => {
             version="1.1"
             viewBox="0 0 521.3 596.4"
             xmlSpace="preserve"
-            /* className={isActive ? "close" : null} */
             >
                 <g className="cartInner">
                     <path

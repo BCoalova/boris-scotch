@@ -1,0 +1,36 @@
+nav {
+    background-color: #92c800;
+    -webkit-box-shadow: 0.3px 0.1px 4px rgba(178, 178, 178, 0.4);
+    box-shadow: 0.3px 0.1px 4px rgba(178, 178, 178, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    /* .navMenu {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    } */
+    &.navbar-light .navbar-nav .nav-link {
+        color:white;
+        font-size: 1.2rem;
+    }
+    .brand svg {
+        width: 215px;
+        fill: white;
+        circle {
+            fill:#C70E20;
+        }
+    }
+
+
+    /* .navbar-collapse.show {
+        position: absolute;
+        top: 86.91px;
+        right: 0;
+        background-color: #92c800;
+    } */
+}
+
+
