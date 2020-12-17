@@ -7,24 +7,31 @@ import { Dash } from 'react-bootstrap-icons';
 import './counter.scss'
 
 
-const Counter = ({initial, stock}) => {
+const Counter = ({stock, initial}) => {
 
     let [count, setCount] = useState(initial)
 
     const handleIncrement = () => {
-        if (count < stock) setCount(++count);
+        if (count < stock) {setCount(++count);}
     }
     const handleDecrement = () => {
-        if (count > 0) setCount(--count);
+        if (count > initial) setCount(--count);
     }
-
+    
     return (
         <div className="counter">
-            <Button onClick={handleDecrement} variant="outline-secondary">
+            <Button 
+                onClick={handleDecrement} 
+                disabled={count === initial}
+                variant="outline-secondary" 
+            >
                 <Dash size={20} />
             </Button>
             <p>{count}</p>
-            <Button onClick={handleIncrement} variant="outline-secondary">
+            <Button 
+                onClick={handleIncrement} 
+                disabled={count === stock} 
+                variant="outline-secondary">
                 <Plus size={20} />
             </Button>
         </div>
