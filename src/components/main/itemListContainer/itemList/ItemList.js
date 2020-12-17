@@ -30,12 +30,14 @@ const ItemList = () => {
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        async function fetchData() {
+        const fetchData = new Promise((res, rej)=> {
+            res(dataBase)
+        })
+        fetchData.then((getData) => {
             setTimeout(() => {
-                setData(dataBase)
+                setData(getData)
             }, 2000);
-        }
-        fetchData()
+        })
     }, [data])
 
     return(
