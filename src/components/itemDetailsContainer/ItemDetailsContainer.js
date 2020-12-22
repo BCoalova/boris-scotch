@@ -4,7 +4,7 @@ import ItemDetails from '../itemDetails/ItemDetails'
 
 const ItemDetailsContainer = () => {
 
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
 
     useEffect(()=>{
         const fetchData = fetch('./data/data.json')
