@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import ItemList from '../itemList/ItemList'
+import Loading from '../loading/Loading'
 import './itemListContainer.scss';
 
 
@@ -26,7 +27,7 @@ const ItemListContainer = () => {
     return(
         <div className="container">
             { data.length === 0 ? 
-                <p>Loading</p> :  
+                <Loading /> :  
                 data.map((e)=>{ return( 
                     <ItemList 
                         key={e.id} 

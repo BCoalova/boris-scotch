@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ItemDetails from '../itemDetails/ItemDetails'
+import Loading from '../loading/Loading'
 
 
 const ItemDetailsContainer = () => {
@@ -17,7 +18,7 @@ const ItemDetailsContainer = () => {
         .then((getData)=>{
             setTimeout(() => {
                 setData(getData)
-            }, 2000);
+            }, 3000);
             
 
         })
@@ -26,7 +27,7 @@ const ItemDetailsContainer = () => {
     return(
         <div className="itemDetailContainer">
             { data.length === 0 ? 
-                <p>LOADING</p> : 
+                <Loading /> : 
                 data.map((e)=>{
                     return(
                         e.id === 'gpu1' ? 
