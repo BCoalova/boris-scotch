@@ -25,7 +25,7 @@ const ItemDetailsContainer = () => {
     
     return(
         <div className="itemDetailContainer">
-            { data === undefined ? 
+            { data.length === 0 ? 
                 <p>LOADING</p> : 
                 data.map((e)=>{
                     return(
