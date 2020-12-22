@@ -1,22 +1,21 @@
-import React from 'react';
+import React from 'react'
 //BOOTSTRAP
 import Card from "react-bootstrap/Card";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 
-import './item.scss'
-import Counter from './counter/Counter';
+import Counter from '../counter/Counter';
+import './itemList.scss'
 
-const Item = ({name, stock}) => {
-
+const ItemList = ({name, stock, price, imageUrl}) => {
     return(
         <Card>
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>
                     {name}
                 </Card.Title>
                 <Card.Text>
-                    Disponibles: {stock}
+                    $ {price}
                 </Card.Text>
                 <Counter 
                     initial={1}
@@ -28,4 +27,4 @@ const Item = ({name, stock}) => {
     )
 }
 
-export default Item
+export default ItemList
