@@ -1,4 +1,5 @@
 import React from "react";
+import {Link, NavLink} from 'react-router-dom'
 //BOOTSTRAP
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -25,14 +26,24 @@ class AppNavBar extends React.Component {
 
         return(
             <Navbar fixed="top" expand="xl" className="justify-content-between">
-                <Navbar.Brand href="#home">
+                <Link to="/">
                     <Brand />
-                </Navbar.Brand>
+                </Link>
                 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto mr-5">
-                        <Nav.Link href="#link_1">{link_1}</Nav.Link>
-                        <Nav.Link href="#link_2">{link_2}</Nav.Link>
+                        <NavLink 
+                            className="nav-link" 
+                            to={`/categorias/${link_1}`}
+                            >
+                            {link_1}
+                        </NavLink>
+                        <NavLink 
+                            className="nav-link" 
+                            to={`/categorias/${link_2}`}
+                            >
+                            {link_2}
+                        </NavLink>
                     </Nav>
                     <Form inline>
                         <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />

@@ -1,6 +1,9 @@
 import React, { useState , useEffect } from 'react';
+import {useParams} from 'react-router-dom'
+//Components
 import ItemList from '../itemList/ItemList'
 import Loading from '../loading/Loading'
+//SCSS
 import './itemListContainer.scss';
 
 
@@ -9,8 +12,10 @@ const ItemListContainer = () => {
 
     const [data, setData] = useState([])
 
+    const params = useParams()
+
     useEffect(()=>{
-        const fetchData = fetch('./data/data.json')
+        const fetchData = fetch('../data/data.json')
         fetchData
         .then((getData) => {
             if (getData.status === 200 ) {
@@ -20,22 +25,39 @@ const ItemListContainer = () => {
         .then((getData)=>{
             setTimeout(() => {
                 setData(getData)
-            }, 2000);
+                /* if () */
+            }, 500);
         })
     }, [])
 
     return(
         <div className="container">
             { data.length === 0 ? 
-                <Loading /> :  
-                data.map((e)=>{ return( 
-                    <ItemList 
-                        key={e.id} 
-                        name={e.name} 
-                        imageUrl={e.imageUrl} 
-                        stock={e.stock} 
-                        price={e.price} /> 
-                )}) 
+                <Loading /> : 
+                data.map((e)=>{ 
+                    return( 
+                        Object.keys(params).length ? 
+                            e.category === params.id ?
+                            <ItemList 
+                                key={e.id}
+                                id={e.id} 
+                                name={e.name}   
+                                imageUrl={e.imageUrl} 
+                                stock={e.stock} 
+                                price={e.price} 
+                                
+                            />: null :
+                            <ItemList 
+                                key={e.id}
+                                id={e.id} 
+                                name={e.name}   
+                                imageUrl={e.imageUrl} 
+                                stock={e.stock} 
+                                price={e.price} 
+                                
+                            />
+                    )
+                })
             }
         </div>
     )

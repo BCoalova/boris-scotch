@@ -6,7 +6,7 @@
         "manufacturer": "Sapphire",
         "price": 35000,
         "description": "Placa de video marca Sapphire, modelo RX 5600 XT BE. Memoria: 6 GB",
-        "imageUrl": "./img/sapphire-rx-5600xt-be.png",
+        "imageUrl": "../img/sapphire-rx-5600xt-be.png",
         "stock": 5
     },
     {
@@ -17,7 +17,7 @@
         "manufacturer": "MSI",
         "price": 37000,
         "description": "Placa de video marca MSI, modelo RX 5600 XT. Memoria: 6 GB",
-        "imageUrl": "./img/msi-rx-5600xt-be.png",
+        "imageUrl": "../img/msi-rx-5600xt-be.png",
         "stock": 16
     },
     {
@@ -28,7 +28,7 @@
         "manufacturer": "EVGA",
         "price": 43000,
         "description": "Placa de video marca EVGA, modelo RTX 2060. Memoria: 6 GB",
-        "imageUrl": "./img/evga-rtx-2060-sc.png",
+        "imageUrl": "../img/evga-rtx-2060-sc.png",
         "stock": 12
     },
     {
@@ -39,6 +39,6 @@
         "manufacturer": "Gigabyte",
         "price": 41000,
         "description": "Placa de video marca Gigabyte, modelo RTX 2060. Memoria: 6 GB",
-        "imageUrl": "./img/gigabyte-rtx-2060-oc.png",
+        "imageUrl": "../img/gigabyte-rtx-2060-oc.png",
         "stock": 7
     }]

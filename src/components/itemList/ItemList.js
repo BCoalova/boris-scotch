@@ -1,12 +1,14 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 //BOOTSTRAP
 import Card from "react-bootstrap/Card";
-import Button from 'react-bootstrap/Button';
-
+import Button from 'react-bootstrap/Button'
+//Components
 import Counter from '../counter/Counter';
+//SCSS
 import './itemList.scss'
 
-const ItemList = ({name, stock, price, imageUrl}) => {
+const ItemList = ({name, stock, price, imageUrl, id}) => {
     return(
         <Card>
             <Card.Img variant="top" src={imageUrl} />
@@ -17,11 +19,12 @@ const ItemList = ({name, stock, price, imageUrl}) => {
                 <Card.Text>
                     $ {price}
                 </Card.Text>
+                <Link to={`/producto/${id}`}>Detalle</Link>
                 <Counter 
                     initial={1}
                     stock={stock}
                 />
-                <Button className="addToCart">Sumar al carrito</Button>
+                <Button variant="primary" className="addToCart">Sumar al carrito</Button>
             </Card.Body>
         </Card>
     )

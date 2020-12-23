@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const ItemDetails = ({ name, category, description, price, imageUrl }) => {
+const ItemDetails = ({ name, category, description, price, imageUrl, id }) => {
     return(
         <>
             <h3>{name}</h3>

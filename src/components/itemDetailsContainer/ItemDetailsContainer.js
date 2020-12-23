@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+//Components
 import ItemDetails from '../itemDetails/ItemDetails'
 import Loading from '../loading/Loading'
 
@@ -7,8 +9,11 @@ const ItemDetailsContainer = () => {
 
     const [data, setData] = useState([])
 
+    const params = useParams()
+    
+
     useEffect(()=>{
-        const fetchData = fetch('./data/data.json')
+        const fetchData = fetch('../data/data.json')
         fetchData
         .then((getData) => {
             if (getData.status === 200 ) {
@@ -18,21 +23,23 @@ const ItemDetailsContainer = () => {
         .then((getData)=>{
             setTimeout(() => {
                 setData(getData)
-            }, 3000);
-            
-
+            }, 600);
         })
+
+        
     }, [])
     
     return(
         <div className="itemDetailContainer">
             { data.length === 0 ? 
                 <Loading /> : 
+                
                 data.map((e)=>{
                     return(
-                        e.id === 'gpu1' ? 
-                        <ItemDetails 
+                        e.id === params.id ? 
+                        <ItemDetails
                             key={e.id}
+                            id={e.id}
                             name={e.name} 
                             imageUrl={e.imageUrl}
                             category={e.category}
