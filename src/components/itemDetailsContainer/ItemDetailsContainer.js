@@ -5,6 +5,7 @@ import ItemDetails from '../itemDetails/ItemDetails'
 import Loading from '../loading/Loading'
 
 
+
 const ItemDetailsContainer = () => {
 
     const [data, setData] = useState([])
@@ -25,26 +26,26 @@ const ItemDetailsContainer = () => {
                 setData(getData)
             }, 600);
         })
-
-        
     }, [])
     
     return(
         <div className="itemDetailContainer">
             { data.length === 0 ? 
                 <Loading /> : 
-                
                 data.map((e)=>{
                     return(
                         e.id === params.id ? 
                         <ItemDetails
-                            key={e.id}
-                            id={e.id}
-                            name={e.name} 
-                            imageUrl={e.imageUrl}
-                            category={e.category}
-                            description={e.description} 
-                            price={e.price} 
+                            details={{
+                                    key: e.id,
+                                    id: e.id,
+                                    name : e.name,
+                                    imageUrl : e.imageUrl,
+                                    category : e.category,
+                                    description : e.description,
+                                    price : e.price,
+                                    stock : e.stock
+                            }}
                         /> :
                         null
                     )

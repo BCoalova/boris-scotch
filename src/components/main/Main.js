@@ -10,7 +10,7 @@ const Main = () => {
     return (
         <div className="min_100_vh">
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/" >
                     <ItemListContainer />
                 </Route>
                 <Route path="/categorias/:id">
