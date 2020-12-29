@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom'
 //Components
 import ItemDetails from '../itemDetails/ItemDetails'
 import Loading from '../loading/Loading'
+//CSS
+import './itemDetailsContainer.scss'
 
 
 
