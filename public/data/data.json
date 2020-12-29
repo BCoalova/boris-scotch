@@ -9,19 +9,18 @@
         "imageUrl": "../img/sapphire-rx-5600xt-be.png",
         "stock": 5,
 
-        "Clock": ["Boost Clock: Up to 1620 MHz", "Game Clock: Up to 1560 MHz"],
-        "Maximum Displays": 4,
-        "Resolution": ["HDMI™: 4096×2160@60Hz", "DisplayPort 1.4: 5120×2880@60Hz"],
-        "Interface": "PCI-Express 4.0",
-        "Output": ["2x HDMI ","2x DisplayPort"],
-        "BIOS Support2": ["UEFI"],
-        "API": ["Vulkan®", "OpenGL® 4.6", "OpenCL 2.0", "DirectX® 12", "Shader Model 6.4"],
-        "Cooling": ["Dual-X Cooling", "Dual Fan", "Two-Ball Bearing"],
-        "Form Factor": "2 slot, ATX",
-        "Dimension": "230.5 x 122.5 x 40.1(mm)",
-        "Power Consumption": "150W",
-        "OS": ["Linux®","Windows®  10", "Windows®  7"],
-        "System Requirement": ["64bit operating system required", "Recommended 500 Watt Power Supply (Minimum 450 Watt Power Supply)", "1 x 8-pin Power Connector", "PCI Express® based PC is required with one X16 lane graphics slot available on the motherboard.", "Minimum 4GB of system memory (8GB recommended)"]
+        "specifications": {
+            "clock": ["Boost Clock: Up to 1620 MHz", "Game Clock: Up to 1560 MHz"],
+            "maximumDisplays": 4,
+            "resolution": ["HDMI™: 4096×2160@60Hz", "DisplayPort 1.4: 5120×2880@60Hz"],
+            "interface": "PCI-Express 4.0",
+            "output": ["2x HDMI ","2x DisplayPort"],
+            "cooling": ["Dual-X Cooling", "Dual Fan", "Two-Ball Bearing"],
+            "formFactor": "2 slot, ATX",
+            "dimension": "230.5 x 122.5 x 40.1 (mm)",
+            "powerConsumption": "150W",
+            "systemRequirement": ["64bit operating system required", "Recommended 500 Watt Power Supply (Minimum 450 Watt Power Supply)", "1 x 8-pin Power Connector", "PCI Express® based PC is required with one X16 lane graphics slot available on the motherboard.", "Minimum 4GB of system memory (8GB recommended)"]
+        }
     },
     {
         "id": "gpu2",
@@ -34,19 +33,18 @@
         "imageUrl": "../img/msi-rx-5600xt-be.png",
         "stock": 16,
 
-        "Clock": [null],
-        "Maximum Displays": null,
-        "Resolution": [null],
-        "Interface": null,
-        "Output": [null],
-        "BIOS Support2": [null],
-        "API": [null],
-        "Cooling": [null],
-        "Form Factor": null,
-        "Dimension": null,
-        "Power Consumption": null,
-        "OS": [null],
-        "System Requirement": [null]
+        "specifications": {
+            "clock": ["Boost: Up to 1750 MHz", "Game: Up to 1615 MHz", "Base: 1420 MHz"],
+            "maximumDisplays": 4,
+            "resolution": ["7680x4320"],
+            "interface": "PCI Express 4.0",
+            "output": ["DisplayPort x 3 (v1.4)", "HDMI 2.0b x 1"],
+            "cooling": ["Dual Fan"],
+            "formFactor": "2 slot, ATX",
+            "dimension": "297 x 58 x 140 (mm)",
+            "powerConsumption": "150W",
+            "systemRequirement": ["64bit operating system required", "Recommended 500 Watt Power Supply (Minimum 450 Watt Power Supply)", "1 x 8-pin Power Connector", "PCI Express® based PC is required with one X16 lane graphics slot available on the motherboard.", "Minimum 4GB of system memory (8GB recommended)"]
+        }
     },
     {
         "id": "gpu3",
@@ -59,19 +57,19 @@
         "imageUrl": "../img/evga-rtx-2060-sc.png",
         "stock": 12,
 
-        "Clock": [null],
-        "Maximum Displays": null,
-        "Resolution": [null],
-        "Interface": null,
-        "Output": [null],
-        "BIOS Support2": [null],
-        "API": [null],
-        "Cooling": [null],
-        "Form Factor": null,
-        "Dimension": null,
-        "Power Consumption": null,
-        "OS": [null],
-        "System Requirement": [null]
+        "specifications": {
+            "clock": ["Boost: 1755 MHz"],
+            "maximumDisplays": 3,
+            "resolution": ["7680x4320"],
+            "interface": "PCIe 3.0",
+            "output": ["HDMI 2.0b", "DisplayPort 1.4", "Dual-Link DVI"],
+            "cooling": ["Dual Fan"],
+            "formFactor": "2 slot, ATX",
+            "dimension": "111.15mm x 267.97mm x Dual Slot",
+            "powerConsumption": "160 Watts",
+            "systemRequirement": ["Minimum of a 500 Watt power supply.", "One available 8-pin PCIe power dongle", "Total Power Draw : 160 Watts"]
+        }
+        
     },
     {
         "id": "gpu4",
@@ -84,17 +82,16 @@
         "imageUrl": "../img/gigabyte-rtx-2060-oc.png",
         "stock": 7,
 
-        "Clock": [null],
-        "Maximum Displays": null,
-        "Resolution": [null],
-        "Interface": null,
-        "Output": [null],
-        "BIOS Support2": [null],
-        "API": [null],
-        "Cooling": [null],
-        "Form Factor": null,
-        "Dimension": null,
-        "Power Consumption": null,
-        "OS": [null],
-        "System Requirement": [null]
+        "specifications": {
+            "clock": ["Boost up to 1‎755 MHz", "Base: 1680 MHz"],
+            "maximumDisplays": 4,
+            "resolution": ["7‎680x4320@60Hz"],
+            "interface": "PCI-E 3.0",
+            "output": ["DisplayPort 1.4 x 3", "HDMI 2.0b x 1"],
+            "cooling": ["Dual Fan"],
+            "formFactor": "2 slot, ATX",
+            "dimension": "225.65 x 122.02 x 40.5 (mm)",
+            "powerConsumption": "160 Watts",
+            "systemRequirement": ["Minimum of a 500 Watt power supply.", "One available 8-pin PCIe power dongle", "Total Power Draw : 160 Watts"]
+        }
     }]

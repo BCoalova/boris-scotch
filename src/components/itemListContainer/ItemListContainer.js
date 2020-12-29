@@ -11,8 +11,9 @@ import './itemListContainer.scss';
 const ItemListContainer = () => {
 
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    const params = useParams()
+    const {id} = useParams()
 
     useEffect(()=>{
         const fetchData = fetch('../data/data.json')
@@ -25,38 +26,35 @@ const ItemListContainer = () => {
         .then((getData)=>{
             setTimeout(() => {
                 setData(getData)
-                /* if () */
+                setLoading(false)
             }, 500);
         })
     }, [])
 
     return(
         <div className="container">
-            { data.length === 0 ? 
-                <Loading /> : 
-                data.map((e)=>{ 
-                    return( 
-                        Object.keys(params).length ? 
-                            e.category === params.id ?
-                            <ItemList 
-                                key={e.id}
-                                id={e.id} 
-                                name={e.name}   
-                                imageUrl={e.imageUrl} 
-                                stock={e.stock} 
-                                price={e.price} 
-                                
-                            />: null :
-                            <ItemList 
-                                key={e.id}
-                                id={e.id} 
-                                name={e.name}   
-                                imageUrl={e.imageUrl} 
-                                stock={e.stock} 
-                                price={e.price} 
-                                
-                            />
-                    )
+            { loading ? 
+                <Loading /> 
+                : data.map((e)=>{ 
+                    return( id ? 
+                        e.category === id ?
+                        <ItemList 
+                            key={e.id}
+                            id={e.id} 
+                            name={e.name}   
+                            imageUrl={e.imageUrl} 
+                            stock={e.stock} 
+                            price={e.price} 
+                        /> 
+                        : null 
+                    : <ItemList 
+                        key={e.id}
+                        id={e.id} 
+                        name={e.name}   
+                        imageUrl={e.imageUrl} 
+                        stock={e.stock} 
+                        price={e.price} 
+                    />)
                 })
             }
         </div>

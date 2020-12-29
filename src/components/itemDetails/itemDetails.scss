@@ -1,0 +1,30 @@
+.detailOverview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    img {
+        width: 30%;
+    }
+    .detailsDescription {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        .counter {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+table {
+    td {
+        h3 {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+    
+}

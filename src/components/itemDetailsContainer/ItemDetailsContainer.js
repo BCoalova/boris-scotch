@@ -9,6 +9,7 @@ import Loading from '../loading/Loading'
 const ItemDetailsContainer = () => {
 
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const params = useParams()
     
@@ -24,27 +25,29 @@ const ItemDetailsContainer = () => {
         .then((getData)=>{
             setTimeout(() => {
                 setData(getData)
+                setLoading(false)
             }, 600);
         })
     }, [])
     
     return(
         <div className="itemDetailContainer">
-            { data.length === 0 ? 
+            { loading ? 
                 <Loading /> : 
                 data.map((e)=>{
                     return(
                         e.id === params.id ? 
-                        <ItemDetails
+                        <ItemDetails 
+                            key={e.id}
                             details={{
-                                    key: e.id,
                                     id: e.id,
                                     name : e.name,
                                     imageUrl : e.imageUrl,
                                     category : e.category,
                                     description : e.description,
                                     price : e.price,
-                                    stock : e.stock
+                                    stock : e.stock,
+                                    specs: e.specifications
                             }}
                         /> :
                         null
