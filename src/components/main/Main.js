@@ -20,7 +20,7 @@ const Main = () => {
                 <Route path="/producto/:id">
                     <ItemDetailsContainer />
                 </Route>
-                <Route>
+                <Route path="/cart">
                     <Cart />
                 </Route>
             </Switch>
