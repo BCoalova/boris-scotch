@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, NavLink} from 'react-router-dom'
 //BOOTSTRAP
 import Navbar from "react-bootstrap/Navbar";
@@ -12,50 +12,43 @@ import CartWidget from "../cartWidget/CartWidget";
 //CSS
 import './navBar.scss';
 
-class AppNavBar extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            link_1 : "AMD",
-            link_2 : "NVidia",
-        }
-    }
-    render(){
 
-        const {link_1, link_2} = this.state
+function AppNavBar() {
+    const [navBarLinks] = useState(['AMD', 'GeForce'])
 
-        return(
-            <Navbar fixed="top" expand="xl" className="justify-content-between">
-                <Link to="/">
-                    <Brand />
-                </Link>
-                
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto mr-5">
-                        <NavLink 
-                            className="nav-link" 
-                            to={`/categorias/${link_1}`}
-                            >
-                            {link_1}
-                        </NavLink>
-                        <NavLink 
-                            className="nav-link" 
-                            to={`/categorias/${link_2}`}
-                            >
-                            {link_2}
-                        </NavLink>
-                    </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
-                        <Button variant="outline-dark">Buscar</Button>
-                    </Form>
-                </Navbar.Collapse>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <CartWidget />
-            </Navbar>
+    return(
+        <Navbar fixed="top" expand="xl" className="justify-content-between">
+            <Link to="/">
+                <Brand />
+            </Link>
             
-        )
-    }
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ml-auto mr-5">
+                    {
+                        navBarLinks.map((navBarLink)=>{
+                            return(
+                                <NavLink 
+                                    className="nav-link" 
+                                    to={`/categorias/${navBarLink}`}
+                                >
+                                    {navBarLink}
+                                </NavLink>
+                            )
+                        })
+                    }
+                </Nav>
+                <Form inline>
+                    <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
+                    <Button variant="outline-dark">Buscar</Button>
+                </Form>
+            </Navbar.Collapse>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <CartWidget />
+        </Navbar>
+        
+    )
 }
 
-export default AppNavBar;
+export default AppNavBar
+
+

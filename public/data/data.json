@@ -52,7 +52,7 @@
         "category": "AMD",
         "graphicProcessingUnit": "Radeon™ RX 6900XT",
         "manufacturer": "Sapphire",
-        "price": 240000,
+        "price": 210000,
         "description": "Placa de video marca Sapphire, modelo RX 6900 XT. Memoria: 16 GB",
         "imageUrl": "../img/sapphire-rx-6900-xt-gaming.png",
         "stock": 1,
@@ -73,7 +73,7 @@
     {
         "id": "gpu4",
         "name": "EVGA RTX 2060 SC",
-        "category": "NVidia",
+        "category": "GeForce",
         "graphicProcessingUnit": "GeForce RTX 2060",
         "manufacturer": "EVGA",
         "price": 43000,
@@ -98,7 +98,7 @@
     {
         "id": "gpu5",
         "name": "Gigabyte RTX 2060 OC",
-        "category": "NVidia",
+        "category": "GeForce",
         "graphicProcessingUnit": "GeForce RTX 2060",
         "manufacturer": "Gigabyte",
         "price": 41000,
@@ -121,8 +121,56 @@
     },
     {
         "id": "gpu6",
+        "name": "Zotac RTX 3070",
+        "category": "GeForce",
+        "graphicProcessingUnit": "GeForce RTX 2060",
+        "manufacturer": "Zotac",
+        "price": 99000,
+        "description": "Placa de video marca Zotac, modelo RTX 3070. Memoria: 8 GB",
+        "imageUrl": "../img/zotac-GeForce-RTX-3070.png",
+        "stock": 7,
+
+        "specifications": {
+            "clock": ["Boost up to 1‎725 MHz"],
+            "maximumDisplays": 4,
+            "resolution": ["DisplayPort 1.4a (up to 7680x4320@60Hz)", "HDMI 2.1* (up to 7680x4320@60Hz)"],
+            "interface": "PCI-E 4.0",
+            "output": ["DisplayPort 1.4 x 3", "HDMI 2.0b x 1"],
+            "cooling": ["Dual Fan"],
+            "formFactor": "2 slot, ATX",
+            "dimension": "231.9 x 141.3 x 41.5 (mm)",
+            "powerConsumption": "220 Watts",
+            "systemRequirement": ["Minimum of a 650 Watt power supply.", "Two available 8-pin PCIe power dongle", "Total Power Draw : 220 Watts"]
+        }
+    },
+    {
+        "id": "gpu7",
+        "name": "Gigabyte RTX 3080 OC",
+        "category": "GeForce",
+        "graphicProcessingUnit": "GeForce RTX™ 3090",
+        "manufacturer": "Gigabyte",
+        "price": 154000,
+        "description": "Placa de video marca Gigabyte, modelo RTX 3090. Memoria: 10 GB",
+        "imageUrl": "../img/gigabyte-rtx-3080.png",
+        "stock": 3,
+
+        "specifications": {
+            "clock": ["Boost up to 1‎800 MHz", "Base: 1710 MHz"],
+            "maximumDisplays": 4,
+            "resolution": ["7‎680x4320@60Hz"],
+            "interface": "PCI-E 4.0 x 16",
+            "output": ["DisplayPort 1.4a x 3", "HDMI 2.1 x 2"],
+            "cooling": ["Triple Fan"],
+            "formFactor": "2.5 slot, ATX",
+            "dimension": "320 x 129 x 55 (mm)",
+            "powerConsumption": "350 Watts",
+            "systemRequirement": ["Minimum of a 750 Watt power supply.", "Two available 8-pin PCIe power dongle", "Total Power Draw : 350 Watts"]
+        }
+    },
+    {
+        "id": "gpu8",
         "name": "Gigabyte RTX 3090 OC",
-        "category": "NVidia",
+        "category": "GeForce",
         "graphicProcessingUnit": "GeForce RTX™ 3090",
         "manufacturer": "Gigabyte",
         "price": 260000,
@@ -137,7 +185,7 @@
             "interface": "PCI-E 4.0 x 16",
             "output": ["DisplayPort 1.4a x 3", "HDMI 2.1 x 2"],
             "cooling": ["Triple Fan"],
-            "formFactor": "3 slot, ATX",
+            "formFactor": "2.5 slot, ATX",
             "dimension": "320 x 129 x 55 (mm)",
             "powerConsumption": "350 Watts",
             "systemRequirement": ["Minimum of a 750 Watt power supply.", "Two available 8-pin PCIe power dongle", "Total Power Draw : 350 Watts"]

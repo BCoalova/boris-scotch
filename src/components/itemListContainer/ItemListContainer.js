@@ -35,25 +35,23 @@ const ItemListContainer = () => {
         <div className="container">
             { loading ? 
                 <Loading /> 
-                : data.map((e)=>{ 
+                : data.map((product)=>{ 
                     return( id ? 
-                        e.category === id ?
+                        product.category === id ?
                         <ItemList 
-                            key={e.id}
-                            id={e.id} 
-                            name={e.name}   
-                            imageUrl={e.imageUrl} 
-                            stock={e.stock} 
-                            price={e.price} 
+                            key={product.id}
+                            id={product.id} 
+                            name={product.name}   
+                            imageUrl={product.imageUrl} 
+                            price={product.price} 
                         /> 
                         : null 
                     : <ItemList 
-                        key={e.id}
-                        id={e.id} 
-                        name={e.name}   
-                        imageUrl={e.imageUrl} 
-                        stock={e.stock} 
-                        price={e.price} 
+                        key={product.id}
+                        id={product.id} 
+                        name={product.name}   
+                        imageUrl={product.imageUrl} 
+                        price={product.price} 
                     />)
                 })
             }
