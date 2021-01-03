@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 //Components
 import ItemDetailsContainer from '../itemDetailsContainer/ItemDetailsContainer';
 import ItemListContainer from '../itemListContainer/ItemListContainer';
+import Cart from '../cart/Cart'
 
 import './main.scss'
 
@@ -19,8 +20,10 @@ const Main = () => {
                 <Route path="/producto/:id">
                     <ItemDetailsContainer />
                 </Route>
+                <Route>
+                    <Cart />
+                </Route>
             </Switch>
-            
         </div>
     )
 }

@@ -36,20 +36,20 @@ const ItemDetailsContainer = () => {
         <div className="itemDetailContainer">
             { loading ? 
                 <Loading /> : 
-                data.map((e)=>{
+                data.map((product)=>{
                     return(
-                        e.id === params.id ? 
+                        product.id === params.id ? 
                         <ItemDetails 
-                            key={e.id}
+                            key={product.id}
                             details={{
-                                    id: e.id,
-                                    name : e.name,
-                                    imageUrl : e.imageUrl,
-                                    category : e.category,
-                                    description : e.description,
-                                    price : e.price,
-                                    stock : e.stock,
-                                    specs: e.specifications
+                                    id: product.id,
+                                    name : product.name,
+                                    imageUrl : product.imageUrl,
+                                    category : product.category,
+                                    description : product.description,
+                                    price : product.price,
+                                    currentStock : product.stock,
+                                    specs: product.specifications
                             }}
                         /> :
                         null
