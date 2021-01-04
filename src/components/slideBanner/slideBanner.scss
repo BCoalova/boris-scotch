@@ -1,0 +1,14 @@
+.carousel {
+    margin-bottom: 2rem;
+    .carousel-caption {
+        position: absolute;
+        left: 1rem;
+        bottom: 50%;
+        right: 50%;
+        z-index: 10;
+        padding: 8rem;
+        color: #fff;
+        text-align: left;
+        transform: translateY(50%);
+    }
+}

@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 //Components
+import SlideBanner from '../slideBanner/SlideBanner'
 import ItemList from '../itemList/ItemList'
 import Loading from '../loading/Loading'
 //SCSS
@@ -32,30 +33,33 @@ const ItemListContainer = () => {
     }, [])
 
     return(
-        <div className="container">
-            { loading ? 
-                <Loading /> 
-                : data.map((product)=>{ 
-                    return( id ? 
-                        product.category === id ?
-                        <ItemList 
+        <>
+            <SlideBanner />
+            <div className="container">
+                { loading ? 
+                    <Loading /> 
+                    : data.map((product)=>{ 
+                        return( id ? 
+                            product.category === id ?
+                            <ItemList 
+                                key={product.id}
+                                id={product.id} 
+                                name={product.name}   
+                                imageUrl={product.imageUrl} 
+                                price={product.price} 
+                            /> 
+                            : null 
+                        : <ItemList 
                             key={product.id}
                             id={product.id} 
                             name={product.name}   
                             imageUrl={product.imageUrl} 
                             price={product.price} 
-                        /> 
-                        : null 
-                    : <ItemList 
-                        key={product.id}
-                        id={product.id} 
-                        name={product.name}   
-                        imageUrl={product.imageUrl} 
-                        price={product.price} 
-                    />)
-                })
-            }
-        </div>
+                        />)
+                    })
+                }
+            </div>
+        </>
     )
 }
 
