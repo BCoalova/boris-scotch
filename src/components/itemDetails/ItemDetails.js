@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
-//Bootstrap
-import Button from 'react-bootstrap/Button'
 //Components
 import Counter from '../counter/Counter'
 import ItemSpecs from '../ItemSpecs/ItemSpecs'

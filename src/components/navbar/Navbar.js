@@ -30,6 +30,7 @@ function AppNavBar() {
                                 <NavLink 
                                     className="nav-link" 
                                     to={`/categorias/${navBarLink}`}
+                                    key={navBarLink}
                                 >
                                     {navBarLink}
                                 </NavLink>
