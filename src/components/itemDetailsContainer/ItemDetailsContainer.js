@@ -41,7 +41,7 @@ const ItemDetailsContainer = () => {
                         product.id === params.id ? 
                         <ItemDetails 
                             key={product.id}
-                            details={{
+                            item={{
                                     id: product.id,
                                     name : product.name,
                                     imageUrl : product.imageUrl,

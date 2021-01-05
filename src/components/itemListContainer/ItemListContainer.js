@@ -39,20 +39,24 @@ const ItemListContainer = () => {
                 : data.map((product)=>{ 
                     return( id ? 
                         product.category === id ?
-                        <ItemList 
+                        <ItemList
                             key={product.id}
-                            id={product.id} 
-                            name={product.name}   
-                            imageUrl={product.imageUrl} 
-                            price={product.price} 
+                            item={{
+                                id: product.id,
+                                name: product.name,
+                                imageUrl: product.imageUrl,
+                                price: product.price
+                            }}
                         /> 
                         : null 
                     : <ItemList 
                         key={product.id}
-                        id={product.id} 
-                        name={product.name}   
-                        imageUrl={product.imageUrl} 
-                        price={product.price} 
+                        item={{
+                            id: product.id,
+                            name: product.name,
+                            imageUrl: product.imageUrl,
+                            price: product.price
+                        }}
                     />)
                 })
             }
