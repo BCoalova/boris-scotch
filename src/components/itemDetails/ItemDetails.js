@@ -7,11 +7,12 @@ import ItemSpecs from '../ItemSpecs/ItemSpecs'
 import './itemDetails.scss'
 
 
+//: {name, imageUrl, description, price, currentStock, id, specs}
+const ItemDetails = ({item}) => {
 
-const ItemDetails = ({details: {name, imageUrl, description, price, currentStock, id, specs}}) => {
-
+    const {name, imageUrl, description, price, currentStock, id, specs} = item
     const initial = 0
-    let [stock, setStock] = useState(currentStock)
+    let [stock, setStock] = useState(item.currentStock)
     let [count, setCount] = useState(initial)
     let [added, setAdded] = useState(false)
     

@@ -5,7 +5,8 @@ import Card from "react-bootstrap/Card";
 //SCSS
 import './itemList.scss'
 
-const ItemList = ({name, price, imageUrl, id}) => {
+const ItemList = ({item}) => {
+    const {id, name, price, imageUrl} = item
     return(
         <Card>
             <Card.Img variant="top" src={imageUrl} />
