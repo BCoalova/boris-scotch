@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Appnavbar from './components/navbar/Navbar';
@@ -8,13 +8,13 @@ import AppFooter from './components/footer/Footer';
 
 const App = () => {
     return(
-        <BrowserRouter>
+        <Router>
             <Appnavbar />
             <Main />
             <AppFooter
                 copy="&copy; Copyright 2020"
             />
-        </BrowserRouter>
+        </Router>
     )
 }
 

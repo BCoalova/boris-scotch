@@ -11,18 +11,10 @@ const Main = () => {
     return (
         <div className="min_100_vh">
             <Switch>
-                <Route exact path="/" >
-                    <ItemListContainer />
-                </Route>
-                <Route path="/categorias/:id">
-                    <ItemListContainer />
-                </Route>
-                <Route path="/producto/:id">
-                    <ItemDetailsContainer />
-                </Route>
-                <Route path="/cart">
-                    <Cart />
-                </Route>
+                <Route component={ItemListContainer} path="/" exact />
+                <Route component={ItemListContainer} path="/categorias/:id" />
+                <Route component={ItemDetailsContainer} path="/producto/:id" />
+                <Route component={Cart} path="/cart" />
             </Switch>
         </div>
     )
