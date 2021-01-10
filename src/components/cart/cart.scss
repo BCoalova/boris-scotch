@@ -1,0 +1,17 @@
+
+
+.productInCart {
+    display: flex;
+    flex-direction: column;
+    img {
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+
+

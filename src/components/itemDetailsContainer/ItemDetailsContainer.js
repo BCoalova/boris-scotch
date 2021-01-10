@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, { useContext} from 'react'
 import {useParams} from 'react-router-dom'
+//Context
+import {StoreContext} from '../../context/StoreContext'
 //Components
 import ItemDetails from '../itemDetails/ItemDetails'
 import Loading from '../loading/Loading'
@@ -10,27 +12,8 @@ import './itemDetailsContainer.scss'
 
 const ItemDetailsContainer = () => {
 
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
-
+    const {loading, data} = useContext(StoreContext)
     const params = useParams()
-    
-
-    useEffect(()=>{
-        const fetchData = fetch('../data/data.json')
-        fetchData
-        .then((getData) => {
-            if (getData.status === 200 ) {
-                return getData.json()
-            }
-        })
-        .then((getData)=>{
-            setTimeout(() => {
-                setData(getData)
-                setLoading(false)
-            }, 600);
-        })
-    }, [])
     
     return(
         <div className="itemDetailContainer">
@@ -49,10 +32,11 @@ const ItemDetailsContainer = () => {
                                     description : product.description,
                                     price : product.price,
                                     currentStock : product.stock,
-                                    specs: product.specifications
-                            }}
-                        /> :
-                        null
+                                    specs: product.specifications,
+                                    params: params.id
+                                }}
+                        /> 
+                        : null
                     )
                 })
             }
