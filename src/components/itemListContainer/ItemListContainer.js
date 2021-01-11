@@ -1,7 +1,8 @@
-import React, { useState , useEffect } from 'react';
+import React, { useContext } from 'react';
 import {useParams} from 'react-router-dom'
+//Context
+import {StoreContext} from '../../context/StoreContext'
 //Components
-//import SlideBanner from '../slideBanner/SlideBanner'
 import ItemList from '../itemList/ItemList'
 import Loading from '../loading/Loading'
 //SCSS
@@ -11,26 +12,9 @@ import './itemListContainer.scss';
 
 const ItemListContainer = () => {
 
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
-
+    const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
-
-    useEffect(()=>{
-        const fetchData = fetch('../data/data.json')
-        fetchData
-        .then((getData) => {
-            if (getData.status === 200 ) {
-                return getData.json()
-            }
-        })
-        .then((getData)=>{
-            setTimeout(() => {
-                setData(getData)
-                setLoading(false)
-            }, 500);
-        })
-    }, [])
+    
 
     return(
         <div className="container">
@@ -45,7 +29,8 @@ const ItemListContainer = () => {
                                 id: product.id,
                                 name: product.name,
                                 imageUrl: product.imageUrl,
-                                price: product.price
+                                price: product.price,
+                                stock:product.stock
                             }}
                         /> 
                         : null 
@@ -55,7 +40,8 @@ const ItemListContainer = () => {
                             id: product.id,
                             name: product.name,
                             imageUrl: product.imageUrl,
-                            price: product.price
+                            price: product.price,
+                            stock:product.stock
                         }}
                     />)
                 })

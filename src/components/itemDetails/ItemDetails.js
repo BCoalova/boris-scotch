@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom'
+//Context
+import {StoreContext} from '../../context/StoreContext'
 //Components
 import Counter from '../counter/Counter'
 import ItemSpecs from '../ItemSpecs/ItemSpecs'
@@ -7,34 +9,26 @@ import ItemSpecs from '../ItemSpecs/ItemSpecs'
 import './itemDetails.scss'
 
 
-//: {name, imageUrl, description, price, currentStock, id, specs}
+
 const ItemDetails = ({item}) => {
 
     const {name, imageUrl, description, price, currentStock, id, specs} = item
-    const initial = 0
-    let [stock, setStock] = useState(item.currentStock)
-    let [count, setCount] = useState(initial)
-    let [added, setAdded] = useState(false)
-    
 
-    const handleIncrement = () => {
-        if (count < currentStock) {
-            setCount(++count);
-            setStock(--stock)
-        }
-    }
-    const handleDecrement = () => {
-        if (count > initial) {
-            setCount(--count)
-            setStock(stock + 1)
-        };
-    }
+    const { 
+        added, 
+        initial, 
+        stock, 
+        setStock, 
+        setCount, 
+        setToggleItem,
+        toggleItem
+    } = useContext(StoreContext)
 
-    const onAdd = () => {
-        if (count <= currentStock) {
-            setAdded(true)
-        }
-    }
+    useEffect(() => {
+        setStock(currentStock)
+        setCount(initial)
+        setToggleItem(!toggleItem)
+    }, [])
 
 
     return(
@@ -46,19 +40,29 @@ const ItemDetails = ({item}) => {
                     <h2>$ {price}</h2>
                     <p>{description}</p>
                     <p>Disponibles: {stock}</p>
-                    {added?
-                        <Link 
-                            className='btn btn-primary'
-                            to={`/cart`}
-                        >Finalizar compra</Link>
+                    {added ?
+                        <div className='itemAdded'>
+                            <Link 
+                                className='btn btn-primary'
+                                to={`/cart`}
+                                /* onClick={newItem} */
+                            >Finalizar compra</Link>
+                            <Link
+                                className='btn btn-outline-primary'
+                                to={`/`}
+                            >
+                                Seguir comprando
+                            </Link>
+                        </div>
                         : <Counter 
-                        count={count}
-                        stock={currentStock} 
-                        initial={initial} 
-                        handleDecrement={handleDecrement}
-                        handleIncrement={handleIncrement}
-                        onAdd={onAdd}
-                    />
+                            currentStock={currentStock}
+                            item={{
+                                id:id,
+                                name: name,
+                                price:price,
+                                imageUrl:imageUrl
+                            }}
+                        />
                     }
 
                 </div>
