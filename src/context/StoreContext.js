@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
+import products from './products'
 
 export const StoreContext = createContext()
 const { Provider } = StoreContext
@@ -10,19 +11,17 @@ const StoreProvider = ({children}) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
-        const fetchData = fetch('../data/data.json')
-        fetchData
-        .then((getData) => {
-            if (getData.status === 200 ) {
-                return getData.json()
+        products.get("/products.json").then((response) => {
+            if (response.status === 200) {
+                const responseData = response.data;
+                setTimeout(()=>{
+                    setData(responseData)
+                    setLoading(false)
+                }, 600)
+            } else {
+                setData("an error ocurr");
             }
-        })
-        .then((getData)=>{
-            setTimeout(() => {
-                setData(getData)
-                setLoading(false)
-            }, 600);
-        })
+        });
     }, [])
 
     //Counter
@@ -47,6 +46,19 @@ const StoreProvider = ({children}) => {
         if (count > initial) {
             setCount(--count)
         };
+    }
+
+    const handleAdd = (e) => {
+        setAdded(!added);
+        setStock(stock - count);
+        setTotalQuantity(totalQuantity + 1);
+        for (const producto of data) {
+            if ( cart.length === 0 && producto.id === e.target.id) {
+                setCart([{id:producto.id,item:producto,quantity:count}])
+            } else if  (producto.id === e.target.id) {
+                setCart(cart => [...cart, {id:producto.id,item:producto,quantity:count}])
+            }
+        }
     }
 
     const handleRemove = (e) => {
@@ -80,6 +92,7 @@ const StoreProvider = ({children}) => {
                 added:added,
                 setAdded:setAdded,
                 //Cart Data
+                handleAdd:handleAdd,
                 setCart:setCart,
                 cart: cart,
                 handleRemove:handleRemove,

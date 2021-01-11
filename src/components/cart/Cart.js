@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {StoreContext} from '../../context/StoreContext'
 import ItemInCart from '../itemInCart/ItemInCart'
@@ -7,6 +7,11 @@ import './cart.scss'
 const Cart = () => {
 
     const {cart} = useContext(StoreContext)
+
+    useEffect(() => {
+        document.body.scrollTop = 0
+    }, [])
+
     return (
         <div className='container'>
             {

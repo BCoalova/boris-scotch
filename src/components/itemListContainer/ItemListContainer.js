@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 //Context
 import {StoreContext} from '../../context/StoreContext'
@@ -14,7 +14,10 @@ const ItemListContainer = () => {
 
     const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
-    
+
+    useEffect(() => {
+        document.body.scrollTop = 0
+    }, [])
 
     return(
         <div className="container">

@@ -24,19 +24,9 @@ const Counter = ({currentStock, item}) => {
         totalQuantity,
         setTotalQuantity,
         setCart,
-        cart
+        cart,
+        handleAdd
     } = useContext(StoreContext)
-
-    const toggleAdded = () => {
-        setAdded(!added);
-        setStock(stock - count);
-        setTotalQuantity(totalQuantity + 1);
-        if (cart.length === 0 ) {
-            setCart([{id:item.id,item:item,quantity:count}])
-        } else {
-            setCart(cart => [...cart, {id:item.id,item:item,quantity:count}])
-        }
-    }
 
     return (
         <>
@@ -57,9 +47,10 @@ const Counter = ({currentStock, item}) => {
                 </Button>
             </div>
             <Button 
+                id={item.id}
                 disabled={count === 0} 
                 variant={count === 0 ? 'outline-secondary' : 'primary'}
-                onClick={toggleAdded}
+                onClick={handleAdd}
             >Agregar al carrito</Button>
             
         </>

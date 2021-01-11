@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'
+import ScrollToTop from './context/ScrollToTop'
 import StoreProvider from './context/StoreContext'
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,13 +11,15 @@ import AppFooter from './components/footer/Footer';
 const App = () => {
     return(
         <Router>
-            <StoreProvider>
-                <Appnavbar />
-                <Main />
-                <AppFooter
-                    copy="&copy; Copyright 2020"
-                />
-            </StoreProvider>
+            <ScrollToTop>
+                <StoreProvider>
+                    <Appnavbar />
+                    <Main />
+                    <AppFooter
+                        copy="&copy; Copyright 2020"
+                    />
+                </StoreProvider>
+            </ScrollToTop>
         </Router>
     )
 }
