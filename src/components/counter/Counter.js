@@ -28,25 +28,13 @@ const Counter = ({currentStock, item}) => {
     } = useContext(StoreContext)
 
     const toggleAdded = () => {
+        setAdded(!added);
+        setStock(stock - count);
+        setTotalQuantity(totalQuantity + 1);
         if (cart.length === 0 ) {
-            setAdded(!added);
-            setCart([{item:item,quantity:count}])
-            setStock(stock - count);
-            setTotalQuantity(count + totalQuantity);
+            setCart([{id:item.id,item:item,quantity:count}])
         } else {
-            cart.map((product)=>{
-                if (product.item.id === item.id) {
-                    console.log('producto ya en carrito' + item.id + product.item.id )
-                    console.log(cart)
-                } else {
-                    setAdded(!added);                   
-                    setStock(stock - count);
-                    setCart(cart => [...cart, {item:item,quantity:count}])
-                    setStock(stock - count);
-                    setTotalQuantity(count + totalQuantity);
-                }
-            })
-            
+            setCart(cart => [...cart, {id:item.id,item:item,quantity:count}])
         }
     }
 

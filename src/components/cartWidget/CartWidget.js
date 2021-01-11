@@ -5,7 +5,7 @@ import './cartWidget.scss';
 
 const CartWidget = () => {
 
-        const {totalQuantity} = useContext(StoreContext)
+    const {totalQuantity} = useContext(StoreContext)
 
     return(
         <>

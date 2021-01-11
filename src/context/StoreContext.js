@@ -5,7 +5,6 @@ const { Provider } = StoreContext
 
 const StoreProvider = ({children}) => {
 
-
     //DATA
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -35,7 +34,6 @@ const StoreProvider = ({children}) => {
     let [totalQuantity, setTotalQuantity] = useState(0)
     let [cart, setCart] = useState([])
 
-
     useEffect(()=>{
         setAdded(false)
     },[toggleItem])
@@ -50,7 +48,16 @@ const StoreProvider = ({children}) => {
             setCount(--count)
         };
     }
-    
+
+    const handleRemove = (e) => {
+        const itemDeleted = cart.filter(function(value, index, arr){
+            if (value.id !== e.target.id) {
+                return arr 
+            }
+        })
+        setCart(itemDeleted)
+        setTotalQuantity(totalQuantity - 1)
+    }
 
     return(
         <Provider 
@@ -75,6 +82,7 @@ const StoreProvider = ({children}) => {
                 //Cart Data
                 setCart:setCart,
                 cart: cart,
+                handleRemove:handleRemove,
                 //CartWidget Data
                 totalQuantity:totalQuantity,
                 setTotalQuantity:setTotalQuantity
