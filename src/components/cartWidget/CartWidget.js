@@ -9,7 +9,6 @@ const CartWidget = () => {
 
     return(
         <>
-
         {totalQuantity === 0 ? 
         null
         : <Link to='/cart'>

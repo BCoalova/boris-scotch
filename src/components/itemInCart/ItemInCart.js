@@ -6,7 +6,7 @@ const ItemInCart = ({details}) => {
     const {handleRemove} = useContext(StoreContext)
 
     return (
-        <div className='productInCart'>
+        <div className='productInCart' id={details.item.id}>
             <img src={details.item.imageUrl}></img>
             <div>
                 <p>{details.item.name}</p>

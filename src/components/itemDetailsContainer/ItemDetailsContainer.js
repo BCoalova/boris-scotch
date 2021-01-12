@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {useParams} from 'react-router-dom'
 //Context
 import {StoreContext} from '../../context/StoreContext'
@@ -8,17 +8,10 @@ import Loading from '../loading/Loading'
 //CSS
 import './itemDetailsContainer.scss'
 
-
-
 const ItemDetailsContainer = () => {
 
     const {loading, data} = useContext(StoreContext)
     const params = useParams()
-
-    useEffect(() => {
-        console.log(document.body)
-        document.body.scrollTop = 0
-    }, [])
 
     return(
         <div className="itemDetailContainer">
@@ -47,7 +40,6 @@ const ItemDetailsContainer = () => {
             }
         </div>
     )
-
 }
 
 export default ItemDetailsContainer

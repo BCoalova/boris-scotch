@@ -8,28 +8,23 @@ import ItemSpecs from '../ItemSpecs/ItemSpecs'
 //SCSS
 import './itemDetails.scss'
 
-
-
 const ItemDetails = ({item}) => {
 
     const {name, imageUrl, description, price, currentStock, id, specs} = item
 
     const { 
         added, 
-        initial, 
+        setAdded,
         stock, 
         setStock, 
-        setCount, 
-        setToggleItem,
-        toggleItem
+        dispatchCount,
     } = useContext(StoreContext)
 
     useEffect(() => {
+        dispatchCount('COUNTER_RESET')
         setStock(currentStock)
-        setCount(initial)
-        setToggleItem(!toggleItem)
+        setAdded(false)
     }, [])
-
 
     return(
         <>
@@ -45,7 +40,6 @@ const ItemDetails = ({item}) => {
                             <Link 
                                 className='btn btn-primary'
                                 to={`/cart`}
-                                /* onClick={newItem} */
                             >Finalizar compra</Link>
                             <Link
                                 className='btn btn-outline-primary'
@@ -60,11 +54,11 @@ const ItemDetails = ({item}) => {
                                 id:id,
                                 name: name,
                                 price:price,
-                                imageUrl:imageUrl
+                                imageUrl:imageUrl,
+                                stock:stock
                             }}
                         />
                     }
-
                 </div>
             </div>
             <ItemSpecs specs={specs} />

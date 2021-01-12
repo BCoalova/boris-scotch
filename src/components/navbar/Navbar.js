@@ -12,7 +12,6 @@ import CartWidget from "../cartWidget/CartWidget";
 //CSS
 import './navBar.scss';
 
-
 function AppNavBar() {
     const [navBarLinks] = useState(['AMD', 'GeForce'])
 
@@ -21,7 +20,6 @@ function AppNavBar() {
             <Link to="/">
                 <Brand />
             </Link>
-            
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto mr-5">
                     {
@@ -46,7 +44,6 @@ function AppNavBar() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <CartWidget />
         </Navbar>
-        
     )
 }
 

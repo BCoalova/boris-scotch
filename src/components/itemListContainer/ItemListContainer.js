@@ -15,10 +15,6 @@ const ItemListContainer = () => {
     const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
 
-    useEffect(() => {
-        document.body.scrollTop = 0
-    }, [])
-
     return(
         <div className="container">
             { loading ? 

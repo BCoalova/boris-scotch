@@ -8,14 +8,7 @@ import Card from "react-bootstrap/Card";
 import './itemList.scss'
 
 const ItemList = ({item}) => {
-    const {id, name, price, imageUrl, stock} = item
-
-    const {setStock} = useContext(StoreContext)
-
-    const getStock = () => {
-        setStock(stock)
-        
-    }
+    const {id, name, price, imageUrl} = item
 
     return(
         <Card>
@@ -30,7 +23,6 @@ const ItemList = ({item}) => {
                 <Link 
                     className="addToCart btn btn-primary" 
                     to={`/producto/${id}`}
-                    onClick={getStock}
                     >Detalle</Link>
             </Card.Body>
         </Card>
