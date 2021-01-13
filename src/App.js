@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'
 import ScrollToTop from './context/ScrollToTop'
 import StoreProvider from './context/StoreContext'
@@ -9,6 +9,12 @@ import Main from './components/main/Main'
 import AppFooter from './components/footer/Footer';
 
 const App = () => {
+
+
+    useEffect(() => {
+        
+    }, [])
+
     return(
         <Router>
             <ScrollToTop>

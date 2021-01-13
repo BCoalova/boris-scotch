@@ -1,7 +1,5 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-//context
-import {StoreContext} from '../../context/StoreContext'
 //BOOTSTRAP
 import Card from "react-bootstrap/Card";
 //SCSS

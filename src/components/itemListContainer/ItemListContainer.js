@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {useParams} from 'react-router-dom'
 //Context
 import {StoreContext} from '../../context/StoreContext'
@@ -15,8 +15,9 @@ const ItemListContainer = () => {
     const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
 
+
     return(
-        <div className="container">
+        <div className="container item_list_container">
             { loading ? 
                 <Loading /> 
                 : data.map((product)=>{ 
