@@ -23,8 +23,8 @@ const counterReducer = (state, action) => {
 const StoreProvider = ({children}) => {
 
     //data sin axios
-    /* const [ dataFirestore, setDataFirestore ] = useState([])
-    const [fullDataFirestore, setFullDataFirestore ] = useState([])
+    const [ dataFirestore, setDataFirestore ] = useState([])
+    
 
     useEffect(() => {
         const db = getFirestore()
@@ -32,8 +32,10 @@ const StoreProvider = ({children}) => {
         const query = itemsCollection.get()
         query.then((result)=>{
             result.docs.forEach((doc)=>{
-                const newProduct = [{id: doc.id, item :doc.data()}]
-                setDataFirestore(newProduct)
+                console.log(doc.id)
+                //const dataRes = doc.data()[id=doc.id]
+                //const newProduct = [id: doc.id, item :]
+                //setDataFirestore(dataFirestore => [...dataFirestore, dataRes])
             })
         })
         .catch((err)=>{
@@ -41,12 +43,6 @@ const StoreProvider = ({children}) => {
         })
     }, [])
 
-    useEffect(() => {
-        if (dataFirestore.length !== 0) {
-            setFullDataFirestore(fullDataFirestore=> [...fullDataFirestore, dataFirestore])
-            setLoading(false)
-        }
-    }, [dataFirestore]) */
 
     //DATA
     const [data, setData] = useState([])
