@@ -6,7 +6,7 @@ import GenericCounter from '../genericCounter/GenericCounter'
 
 const ItemInCart = ({item}) => {
     
-    const {handleRemove, handleCartDecrement, handleCartIncrement, data} = useContext(StoreContext)
+    const {handleRemove, handleCartDecrement, handleCartIncrement} = useContext(StoreContext)
 
     const onRemove = () => {
         handleRemove(item)
@@ -24,10 +24,17 @@ const ItemInCart = ({item}) => {
         <div className='productInCart' id={item.item.id}>
             <img alt={item.item.id} src={item.item.imageUrl}></img>
             <div className='cart_body'>
-                <h2>{item.item.name}</h2>
+                <h5>{item.item.name}</h5>
                 <p>$ {item.item.price}</p>
-                <div>
-                    
+                <div className='counter_AND_remove'>
+                    <div className='remove'>
+                        <p>x {item.quantity} = ${item.quantity * item.item.price}</p>
+                        <Button
+                            id={item.item.id}
+                            onClick={onRemove} 
+                            variant="outline-danger"
+                        >Remover</Button>
+                    </div>
                     <GenericCounter
                         onIncrementAction={
                             ()=>{
@@ -45,14 +52,9 @@ const ItemInCart = ({item}) => {
                         disableIncrement={
                             item.quantity === item.stockInStore
                         }
-                        affectedValue={'Cantidad: ' + item.quantity}
+                        affectedValue={item.quantity}
                     />
                 </div>
-                <Button
-                    id={item.item.id}
-                    onClick={onRemove} 
-                    variant="outline-danger"
-                >Remover</Button>
                 
             </div>
         </div>

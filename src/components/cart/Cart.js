@@ -15,7 +15,8 @@ const Cart = () => {
             
                 {cart.length === 0 ? 
                     <EmptyCart />
-                    : <div className='cart_items'>
+                    : <>
+                    <div className='cart_items'>
                         {cart.map((itemInCart) => 
                                 <div key={itemInCart.item.id + itemInCart.quantity}  className='cart_items'>
                                     <ItemInCart 
@@ -24,11 +25,20 @@ const Cart = () => {
                                 </div>
                         )}
                     </div>
+                    <div className='cart_total_wrapper'> 
+                        <div className='cart_total'>
+                            <h2>Total: $ {handleTotal()}</h2>
+                            {cart.length === 0 ?
+                                null
+                                : <div className='cart_total_buttons'>
+                                    <Button variant="outline-danger" onClick={handleClearAll} >Borrar todo</Button>
+                                    <Button variant='primary'>Finalizar Compra</Button>
+                                </div>}
+                        </div>
+                    </div>
+                    </>
                 }
-                <div className='cart_total'> 
-                    <h2>Total: $ {handleTotal()}</h2>
-                    <Button variant="outline-danger" onClick={handleClearAll} >Borrar todo</Button>
-                </div>
+                
             
         </div>
     )

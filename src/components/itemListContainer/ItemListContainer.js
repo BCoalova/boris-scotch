@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import {getFirestore} from '../../firebase'
 import {useParams} from 'react-router-dom'
 //Context
 import {StoreContext} from '../../context/StoreContext'
@@ -14,7 +15,6 @@ const ItemListContainer = () => {
 
     const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
-
 
     return(
         <div className="container item_list_container">

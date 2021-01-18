@@ -1,6 +1,5 @@
 import React, {createContext, useState, useEffect, useReducer} from 'react'
 import {getFirestore} from '../firebase'
-import products from './products'
 
 export const StoreContext = createContext()
 const { Provider } = StoreContext
@@ -22,66 +21,46 @@ const counterReducer = (state, action) => {
 
 const StoreProvider = ({children}) => {
 
-    //data sin axios
-    const [ dataFirestore, setDataFirestore ] = useState([])
-    
-
+    //DATA
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)    
+                
     useEffect(() => {
         const db = getFirestore()
         const itemsCollection = db.collection('items')
         const query = itemsCollection.get()
         query.then((result)=>{
             result.docs.forEach((doc)=>{
-                console.log(doc.id)
-                //const dataRes = doc.data()[id=doc.id]
-                //const newProduct = [id: doc.id, item :]
-                //setDataFirestore(dataFirestore => [...dataFirestore, dataRes])
+                const dataRes = doc.data()
+                setData(data => [...data, dataRes])
+                setLoading(false)
             })
         })
         .catch((err)=>{
             console.log(err)
         })
-    }, [])
-
-
-    //DATA
-    const [data, setData] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(()=>{
-        products.get("/products.json").then((response) => {
-            if (response.status === 200) {
-                const responseData = response.data;
-                setTimeout(()=>{
-                    setData(responseData)
-                    setLoading(false)
-                }, 600)
-            } else {
-                setData("an error ocurr ");
-            }
-        });
-    }, [])
+    }, []) 
 
     const [counterCount, dispatchCount] = useReducer(counterReducer, counterInitialState)
     
     let [stock, setStock] = useState()
     let [added, setAdded] = useState(false)
-    let [totalQuantity, setTotalQuantity] = useState(0)
     let [cart, setCart] = useState([])
+    let [cartWidgetACC, setCartWidgetACC] = useState(0)
 
     //Verificaciones de cambios en el carrito y en data
-    useEffect(() => {
-        console.log('cart => ', cart)
-    }, [cart])
-    useEffect(() => {
-        console.log('data => ', data)
-    }, [data])
+    /* useEffect(() => {
+        console.log(`cambió cart =>`, cart)
+    }, [cart])*/
+    /* useEffect(() => {
+        console.log(`cambió data =>`, data)
+    }, [data])  */
     
     //Producto añadido al carrito
     const handleAdd = (item) => {
         setAdded(!added);
-        setTotalQuantity(totalQuantity + counterCount);
-        const isInCart = cart.find((p) => p.id === item.id);
+        setCartWidgetACC(cartWidgetACC + counterCount);
+        const isInCart = cart.find(p => p.id === item.id);
         if (!isInCart) {
             const newProduct = { 
                 id: item.id, 
@@ -107,7 +86,7 @@ const StoreProvider = ({children}) => {
         itemToChange.stock = item.stock - counterCount
         setStock(itemToChange.stock)
         setData(newData);
-    }
+    } 
     //Se elimina toda la quantity de productos del carrito
     const handleRemove = (item) => {
         cart.splice(
@@ -115,7 +94,7 @@ const StoreProvider = ({children}) => {
             1
         );
         setCart([...cart]);
-        setTotalQuantity(totalQuantity - item.quantity)
+        setCartWidgetACC(cartWidgetACC - item.quantity)
         handleAddToStock(item)
     }
     //Se agrega al stock la quantity del producto eliminado en handleRemove ↑
@@ -125,7 +104,7 @@ const StoreProvider = ({children}) => {
         itemToChange.stock +=  item.quantity
         setStock(itemToChange.stock)
         setData(newData);
-    }
+    } 
     //Maneja el precio total de los productos en el carrito
     const handleTotal = () => {
         return cart.reduce((sum, p) => sum + p.totalPrice, 0)
@@ -138,8 +117,8 @@ const StoreProvider = ({children}) => {
         setCart([...cart])
         const getItemInData = data.find((p)=>p.id===item.id)
         getItemInData.stock += 1
-        setData([...data])
-        setTotalQuantity(totalQuantity - 1)
+        setData([...data]) 
+        setCartWidgetACC(cartWidgetACC - 1)
         if (item.quantity === 0 ) {
             cart.splice(
                 cart.findIndex((p) => p.id === item.id),
@@ -155,13 +134,13 @@ const StoreProvider = ({children}) => {
             const getItemInCart = cart.find((p)=>p.id===item.id)
             getItemInCart.quantity += 1
             getItemInCart.totalPrice += getItemInCart.item.price
-            setTotalQuantity(totalQuantity - 1)
+            setCartWidgetACC(cartWidgetACC - 1)
             setCart([...cart])
             const getItemInData = data.find((p)=>p.id===item.id)
             getItemInData.stock += 1
-            setTotalQuantity(totalQuantity + 1)
+            setCartWidgetACC(cartWidgetACC + 1)
             setData([...data])
-            setTotalQuantity(totalQuantity + 1)
+            setCartWidgetACC(cartWidgetACC + 1)
         }
     }
     //Maneja la eliminación de todos los productos con todas sus 
@@ -172,31 +151,34 @@ const StoreProvider = ({children}) => {
             const itemToChange = newData.find((dp)=>{return cp.id === dp.id})
             itemToChange.stock +=  cp.quantity
             setStock(itemToChange.stock)
-            setData(newData);
+            setData(newData); 
             setCart([])
-            setTotalQuantity(0)
+            setCartWidgetACC(0)
         });
     }
+
     return(
         <Provider 
             value={{
-                //DATA
+                //DATA 
                 data: data,
+                setData: setData,
                 loading: loading,
+                setLoading:setLoading,
                 stock: stock,
                 setStock: setStock,
                 added:added,
-                setAdded:setAdded,
-                handleAdd:handleAdd,
+                setAdded: setAdded,
+                handleAdd: handleAdd,
                 cart: cart,
-                handleRemove:handleRemove,
-                totalQuantity:totalQuantity,
-                counterCount:counterCount, 
-                dispatchCount:dispatchCount,
-                handleTotal:handleTotal,
-                handleClearAll:handleClearAll,
-                handleCartDecrement:handleCartDecrement,
-                handleCartIncrement:handleCartIncrement
+                handleRemove: handleRemove,
+                cartWidgetACC: cartWidgetACC,
+                counterCount: counterCount, 
+                dispatchCount: dispatchCount,
+                handleTotal: handleTotal,
+                handleClearAll: handleClearAll,
+                handleCartDecrement: handleCartDecrement,
+                handleCartIncrement: handleCartIncrement
             }}
         >
             {children}
