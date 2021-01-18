@@ -14,6 +14,26 @@ const ItemDetailsContainer = () => {
     const {loading, data} = useContext(StoreContext)
     const params = useParams()
 
+    const [realTimePrice, setRealTimePrice] = useState()
+
+    useEffect(() => {
+        const db = getFirestore()
+        const itemsCollection = db.collection('items')
+        const query = itemsCollection.doc(params.id)
+        query.get()
+        .then((querySnapshot)=>{
+            if (!querySnapshot.exists) {
+                console.log('noexiste')
+            } else {
+                const price = querySnapshot.data()
+                setRealTimePrice(price.price)
+            }
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }, [])
+
     return(
         <div className="itemDetailContainer">
             { loading ? 
@@ -29,7 +49,7 @@ const ItemDetailsContainer = () => {
                                     imageUrl : product.imageUrl,
                                     category : product.category,
                                     description : product.description,
-                                    price : product.price,
+                                    price : realTimePrice,
                                     currentStock : product.stock,
                                     specs: product.specifications,
                                     params: params.id

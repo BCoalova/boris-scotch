@@ -16,6 +16,28 @@ const ItemListContainer = () => {
     const {data, loading} = useContext(StoreContext)
     const {id} = useParams()
 
+    let [categoryQuery, setCategoryQuery] = useState([])
+
+    useEffect(() => {
+        const db = getFirestore()
+        const itemsCollection = db.collection('items')
+        if (id) {
+            var query = itemsCollection.where("category", "==", id);
+            query.get()
+            .then((querySnapshot)=>{
+                setCategoryQuery([])
+                querySnapshot.forEach(function(doc) {
+                    const categoryQueryRes = doc.data()
+                    setCategoryQuery(categoryQuery => [...categoryQuery, categoryQueryRes])
+                });
+            })
+        }
+        
+    }, [id])
+    useEffect(() => {
+        console.log('Cambio en State CategoryQuery => ', categoryQuery)
+    }, [categoryQuery])
+
     return(
         <div className="container item_list_container">
             { loading ? 
