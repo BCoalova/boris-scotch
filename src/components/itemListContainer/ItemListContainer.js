@@ -13,50 +13,43 @@ import './itemListContainer.scss';
 
 const ItemListContainer = () => {
 
-    const {data, loading} = useContext(StoreContext)
+    const {loading, setLoading } = useContext(StoreContext)
+    const [data, setData] = useState([])
     const {id} = useParams()
 
-    let [categoryQuery, setCategoryQuery] = useState([])
-
     useEffect(() => {
+        setLoading(true)
+        setData([])
         const db = getFirestore()
         const itemsCollection = db.collection('items')
         if (id) {
-            var query = itemsCollection.where("category", "==", id);
+            const query = itemsCollection.where("category", "==", id);
             query.get()
             .then((querySnapshot)=>{
-                setCategoryQuery([])
+                /* setCategoryQuery([]) */
                 querySnapshot.forEach(function(doc) {
-                    const categoryQueryRes = doc.data()
-                    setCategoryQuery(categoryQuery => [...categoryQuery, categoryQueryRes])
+                    const dataRes = doc.data()
+                    setData(data => [...data, dataRes])
+                });
+            })
+        } else {
+            itemsCollection.get()
+            .then((querySnapshot)=> {
+                querySnapshot.forEach(function(doc) {
+                    const dataRes = doc.data()
+                    setData(data => [...data, dataRes])
                 });
             })
         }
-        
+        setLoading(false)
     }, [id])
-    useEffect(() => {
-        console.log('Cambio en State CategoryQuery => ', categoryQuery)
-    }, [categoryQuery])
 
     return(
         <div className="container item_list_container">
             { loading ? 
                 <Loading /> 
                 : data.map((product)=>{ 
-                    return( id ? 
-                        product.category === id ?
-                        <ItemList
-                            key={product.id}
-                            item={{
-                                id: product.id,
-                                name: product.name,
-                                imageUrl: product.imageUrl,
-                                price: product.price,
-                                stock:product.stock
-                            }}
-                        /> 
-                        : null 
-                    : <ItemList 
+                    return(<ItemList
                         key={product.id}
                         item={{
                             id: product.id,

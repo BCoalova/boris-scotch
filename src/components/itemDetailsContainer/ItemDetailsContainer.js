@@ -11,10 +11,15 @@ import './itemDetailsContainer.scss'
 
 const ItemDetailsContainer = () => {
 
-    const {loading, data} = useContext(StoreContext)
+    const {loading, setLoading/* , data */} = useContext(StoreContext)
+    const [data, setData] = useState([])
     const params = useParams()
 
     const [realTimePrice, setRealTimePrice] = useState()
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
 
     useEffect(() => {
         const db = getFirestore()
@@ -25,6 +30,9 @@ const ItemDetailsContainer = () => {
             if (!querySnapshot.exists) {
                 console.log('noexiste')
             } else {
+                const dataRes = querySnapshot.data()
+                setLoading(false)
+                setData(data => [...data, dataRes])
                 const price = querySnapshot.data()
                 setRealTimePrice(price.price)
             }
@@ -39,24 +47,20 @@ const ItemDetailsContainer = () => {
             { loading ? 
                 <Loading /> : 
                 data.map((product)=>{
-                    return(
-                        product.id === params.id ? 
-                        <ItemDetails 
-                            key={product.id}
-                            item={{
-                                    id: product.id,
-                                    name : product.name,
-                                    imageUrl : product.imageUrl,
-                                    category : product.category,
-                                    description : product.description,
-                                    price : realTimePrice,
-                                    currentStock : product.stock,
-                                    specs: product.specifications,
-                                    params: params.id
-                                }}
-                        /> 
-                        : null
-                    )
+                    return(<ItemDetails 
+                        key={product.id}
+                        item={{
+                                id: product.id,
+                                name : product.name,
+                                imageUrl : product.imageUrl,
+                                category : product.category,
+                                description : product.description,
+                                price : product.price,
+                                currentStock : product.stock,
+                                specs: product.specifications,
+                                params: params.id
+                            }}
+                    />)
                 })
             }
         </div>

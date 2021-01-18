@@ -164,7 +164,7 @@ const StoreProvider = ({children}) => {
                 data: data,
                 setData: setData,
                 loading: loading,
-                setLoading:setLoading,
+                setLoading: setLoading,
                 stock: stock,
                 setStock: setStock,
                 added:added,
