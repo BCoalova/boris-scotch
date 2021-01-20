@@ -2,14 +2,22 @@ import firebase from "firebase/app";
 
 import "firebase/firestore";
 
+const apiKey = process.env.REACT_APP_apiKey
+const authDomain = process.env.REACT_APP_authDomain
+const databaseURL = process.env.REACT_APP_databaseURL
+const projectId = process.env.REACT_APP_projectId
+const storageBucket = process.env.REACT_APP_storageBucket
+const messagingSenderId = process.env.REACT_APP_messagingSenderId
+const appId = process.env.REACT_APP_appId
+
 const config = {	
-    apiKey: "AIzaSyBUxlHC2lbEA2J7vb6YatxWhHaikJftNa4",	
-    authDomain: "coderhouse-ecommerce-b2612.firebaseapp.com",	
-    databaseURL: "https://coderhouse-ecommerce-b2612-default-rtdb.firebaseio.com",	
-    projectId: "coderhouse-ecommerce-b2612",	
-    storageBucket: "coderhouse-ecommerce-b2612.appspot.com",	
-    messagingSenderId: "502767622331",	
-    appId: "1:502767622331:web:0aadfc9399ed603baef19e"	
+    apiKey,
+    authDomain,
+    databaseURL,
+    projectId,
+    storageBucket,
+    messagingSenderId,
+    appId
 };	
 
 const app = firebase.initializeApp(config);	

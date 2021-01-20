@@ -1,15 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
-import {getFirestore} from '../../firebase'
-import {useParams} from 'react-router-dom'
+import { getFirestore } from '../../firebase'
+import { useParams } from 'react-router-dom'
 //Context
-import {StoreContext} from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext'
 //Components
 import ItemList from '../itemList/ItemList'
 import Loading from '../loading/Loading'
 //SCSS
 import './itemListContainer.scss';
-
-
 
 const ItemListContainer = () => {
 
@@ -26,7 +24,6 @@ const ItemListContainer = () => {
             const query = itemsCollection.where("category", "==", id);
             query.get()
             .then((querySnapshot)=>{
-                /* setCategoryQuery([]) */
                 querySnapshot.forEach(function(doc) {
                     const dataRes = doc.data()
                     setData(data => [...data, dataRes])
@@ -35,6 +32,7 @@ const ItemListContainer = () => {
         } else {
             itemsCollection.get()
             .then((querySnapshot)=> {
+
                 querySnapshot.forEach(function(doc) {
                     const dataRes = doc.data()
                     setData(data => [...data, dataRes])

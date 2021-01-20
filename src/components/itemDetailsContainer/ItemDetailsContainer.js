@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {getFirestore} from '../../firebase'
-import {useParams} from 'react-router-dom'
+import { getFirestore } from '../../firebase'
+import { useParams } from 'react-router-dom'
 //Context
-import {StoreContext} from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext'
 //Components
 import ItemDetails from '../itemDetails/ItemDetails'
 import Loading from '../loading/Loading'
@@ -14,8 +14,6 @@ const ItemDetailsContainer = () => {
     const {loading, setLoading/* , data */} = useContext(StoreContext)
     const [data, setData] = useState([])
     const params = useParams()
-
-    const [realTimePrice, setRealTimePrice] = useState()
 
     useEffect(() => {
         console.log(data)
@@ -33,8 +31,6 @@ const ItemDetailsContainer = () => {
                 const dataRes = querySnapshot.data()
                 setLoading(false)
                 setData(data => [...data, dataRes])
-                const price = querySnapshot.data()
-                setRealTimePrice(price.price)
             }
         })
         .catch((err)=>{
@@ -57,8 +53,7 @@ const ItemDetailsContainer = () => {
                                 description : product.description,
                                 price : product.price,
                                 currentStock : product.stock,
-                                specs: product.specifications,
-                                params: params.id
+                                specs: product.specifications
                             }}
                     />)
                 })
