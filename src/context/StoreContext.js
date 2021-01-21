@@ -48,17 +48,26 @@ const StoreProvider = ({children}) => {
     let [cart, setCart] = useState([])
     let [cartWidgetACC, setCartWidgetACC] = useState(0)
 
-    //Verificaciones de cambios en el carrito y en data
+    /* 
+        -----------------------------------------
+        ----- Verificaciones de cambios en: -----
+        -----  cart -- data -- newPurchase  -----
+        -----------------------------------------
+    */
     /* useEffect(() => {
         console.log(`cambió cart =>`, cart)
-    }, [cart])*/
+    }, [cart]) */
     /* useEffect(() => {
         console.log(`cambió data =>`, data)
     }, [data])  */
+    /* useEffect(() => {
+        console.log(newPurchase)
+    }, [newPurchase]) */
     
     //Producto añadido al carrito
     const handleAdd = (item) => {
         setAdded(!added);
+        setNewPurchase('')
         setCartWidgetACC(cartWidgetACC + counterCount);
         const isInCart = cart.find(p => p.id === item.id);
         if (!isInCart) {
@@ -156,29 +165,81 @@ const StoreProvider = ({children}) => {
             setCartWidgetACC(0)
         });
     }
+    //COMPRA REALIZADA
+    const [name, setName] = useState('John')
+    const [surname, setSurname] = useState('Wick')
+    const [email, setEmail] = useState('jwick@thecontinental.com')
+    const [phoneNumber, setPhoneNumber] = useState('31457866')
+
+    const [newPurchase, setNewPurchase] = useState('')
+    
+
+    const handlePurchase = (e) => {
+        e.preventDefault()
+        
+        const purchaseData = {
+            buyer : {
+                name,
+                surname,
+                phoneNumber,
+                email
+            },
+            items : cart,
+            total : handleTotal()
+        }
+        setNewPurchase(purchaseData)
+        const db = getFirestore()
+        const OrderCollection = db.collection("orders")
+        OrderCollection.add(purchaseData)
+        .then(( res )=>{
+
+            OrderCollection.doc(res.id)
+            .get()
+            .then((querySnapshot)=>{
+                if (!querySnapshot.exists) {
+                    console.log('noexiste')
+                } else {
+                    setNewPurchase({
+                        id: querySnapshot.id,
+                        ...querySnapshot.data()
+                    })
+                    
+                }
+            })
+
+            const Itemscollection = db.collection("items")
+            const batch = getFirestore().batch()
+
+            cart.forEach( p => {
+                batch.update(Itemscollection.doc(p.id),{stock:p.stockInStore - p.quantity})
+            })
+            batch.commit()
+            .then(()=>{
+                console.log("Termino bien")
+                setCart([])
+                setCartWidgetACC(0)
+            })
+        })
+    }
 
     return(
         <Provider 
             value={{
                 //DATA 
-                data: data,
-                setData: setData,
-                loading: loading,
-                setLoading: setLoading,
-                stock: stock,
-                setStock: setStock,
-                added:added,
-                setAdded: setAdded,
-                handleAdd: handleAdd,
-                cart: cart,
-                handleRemove: handleRemove,
-                cartWidgetACC: cartWidgetACC,
-                counterCount: counterCount, 
-                dispatchCount: dispatchCount,
-                handleTotal: handleTotal,
-                handleClearAll: handleClearAll,
-                handleCartDecrement: handleCartDecrement,
-                handleCartIncrement: handleCartIncrement
+                data, setData,
+                loading, setLoading,
+                stock, setStock,
+                added, setAdded,
+                handleAdd, handleRemove,
+                cart, cartWidgetACC,
+                counterCount,
+                dispatchCount,
+                handleTotal,
+                handleClearAll,
+                handleCartDecrement, handleCartIncrement,
+                //purchase => cartTotal.js
+                handlePurchase, name, setName, surname, setSurname, email, setEmail, 
+                phoneNumber, setPhoneNumber, newPurchase
             }}
         >
             {children}

@@ -11,12 +11,12 @@ import './itemListContainer.scss';
 
 const ItemListContainer = () => {
 
-    const {loading, setLoading } = useContext(StoreContext)
-    const [data, setData] = useState([])
-    const {id} = useParams()
+    const { loading, data } = useContext(StoreContext)
+    //const [data, setData] = useState([])
+    const { id } = useParams()
 
-    useEffect(() => {
-        setLoading(true)
+    /* useEffect(() => {
+        
         setData([])
         const db = getFirestore()
         const itemsCollection = db.collection('items')
@@ -40,14 +40,27 @@ const ItemListContainer = () => {
             })
         }
         setLoading(false)
-    }, [id])
+    }, [id]) */
 
     return(
         <div className="container item_list_container">
-            { loading ? 
-                <Loading /> 
-                : data.map((product)=>{ 
-                    return(<ItemList
+            { loading ?
+                <Loading />
+                : data.map((product)=>{
+                    return( id ?
+                        product.category === id ?
+                        <ItemList
+                            key={product.id}
+                            item={{
+                                id: product.id,
+                                name: product.name,
+                                imageUrl: product.imageUrl,
+                                price: product.price,
+                                stock:product.stock
+                            }}
+                        />
+                        : null
+                    : <ItemList
                         key={product.id}
                         item={{
                             id: product.id,

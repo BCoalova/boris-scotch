@@ -11,15 +11,12 @@ import './itemDetailsContainer.scss'
 
 const ItemDetailsContainer = () => {
 
-    const {loading, setLoading/* , data */} = useContext(StoreContext)
-    const [data, setData] = useState([])
+    const { data } = useContext(StoreContext)
+    const [product, setProduct] = useState()
     const params = useParams()
+    /* const [data, setData] = useState([]) */
 
-    useEffect(() => {
-        console.log(data)
-    }, [data])
-
-    useEffect(() => {
+    /* useEffect(() => {
         const db = getFirestore()
         const itemsCollection = db.collection('items')
         const query = itemsCollection.doc(params.id)
@@ -36,27 +33,28 @@ const ItemDetailsContainer = () => {
         .catch((err)=>{
             console.log(err)
         })
-    }, [])
+    }, []) */
+
+    useEffect(() => {
+        setProduct(data.find(p => params.id === p.id))
+    }, [params.id, data])
 
     return(
         <div className="itemDetailContainer">
-            { loading ? 
-                <Loading /> : 
-                data.map((product)=>{
-                    return(<ItemDetails 
-                        key={product.id}
+            { product ? 
+                    <ItemDetails 
                         item={{
-                                id: product.id,
-                                name : product.name,
-                                imageUrl : product.imageUrl,
-                                category : product.category,
-                                description : product.description,
-                                price : product.price,
-                                currentStock : product.stock,
-                                specs: product.specifications
-                            }}
-                    />)
-                })
+                            id: product.id,
+                            name : product.name,
+                            imageUrl : product.imageUrl,
+                            category : product.category,
+                            description : product.description,
+                            price : product.price,
+                            currentStock : product.stock,
+                            specs: product.specifications
+                        }}
+                    />
+                    : <Loading />
             }
         </div>
     )

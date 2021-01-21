@@ -78,9 +78,20 @@
             background-clip: border-box;
             border-radius: 8px;
             box-shadow: 0px 0px 10px 1px rgba(94, 94, 94, 0.15);
-            .cart_total_buttons {
+            .cart_total_form {
                 display: flex;
                 flex-direction: column;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    .form_group_inline {
+                        display: flex;
+                        flex-direction: row;
+                        .form-group:last-child {
+                            margin-left: .2rem;
+                        }
+                    }
+                }
                 button {
                     margin-top: 1rem;
                 }
