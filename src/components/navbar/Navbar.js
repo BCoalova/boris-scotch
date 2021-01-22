@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import {Link, NavLink} from 'react-router-dom'
+import React, {useState, useEffect} from "react";
+import { getFirestore } from '../../firebase'
+import { Link, NavLink } from 'react-router-dom'
 //BOOTSTRAP
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -13,7 +14,27 @@ import CartWidget from "../cartWidget/CartWidget";
 import './navBar.scss';
 
 function AppNavBar() {
-    const [navBarLinks] = useState(['AMD', 'GeForce'])
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        const db = getFirestore()
+        const itemsCollection = db.collection('categories')
+        itemsCollection.get()
+        .then((res)=>{
+            res.forEach(category => {
+                /* console.log(category.data()) */
+                setCategories(categories=>[...categories, {id: category.id, ...category.data()}])
+            });
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [])
+
+    useEffect(() => {
+        console.log(categories)
+    }, [categories])
 
     return(
         <Navbar fixed="top" expand="xl" className="justify-content-between">
@@ -22,18 +43,19 @@ function AppNavBar() {
             </Link>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto mr-5">
-                    {
-                        navBarLinks.map((navBarLink)=>{
+                    {categories.length > 0 ?
+                        categories.map(category=>{
                             return(
                                 <NavLink 
                                     className="nav-link" 
-                                    to={`/categorias/${navBarLink}`}
-                                    key={navBarLink}
+                                    to={`/categorias/${category.key}`}
+                                    key={category.id}
                                 >
-                                    {navBarLink}
+                                    {category.name}
                                 </NavLink>
                             )
                         })
+                        : null
                     }
                 </Nav>
                 <Form inline>

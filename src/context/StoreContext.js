@@ -51,7 +51,7 @@ const StoreProvider = ({children}) => {
     /* 
         -----------------------------------------
         ----- Verificaciones de cambios en: -----
-        -----  cart -- data -- newPurchase  -----
+        ------ cart -- data -- newPurchase ------
         -----------------------------------------
     */
     /* useEffect(() => {
@@ -64,7 +64,11 @@ const StoreProvider = ({children}) => {
         console.log(newPurchase)
     }, [newPurchase]) */
     
-    //Producto añadido al carrito
+    /* 
+        -----------------------------------------
+        ------ Producto añadido al carrito ------ 
+        -----------------------------------------
+    */
     const handleAdd = (item) => {
         setAdded(!added);
         setNewPurchase('')
@@ -87,8 +91,13 @@ const StoreProvider = ({children}) => {
             handleRemoveFromStock(item)
         }
     }
-    //Remueve del stock en data la cantidad que se 
-    //agrego al carrito
+    /* 
+        -----------------------------------------
+        ------- Remueve del stock en data ------- 
+        ------- la cantidad que se agrego -------
+        --------------- al carrito --------------
+        -----------------------------------------
+    */
     const handleRemoveFromStock = (item) => {
         const newData = data
         const itemToChange = newData.find((p) => p.id === item.id);
@@ -96,6 +105,12 @@ const StoreProvider = ({children}) => {
         setStock(itemToChange.stock)
         setData(newData);
     } 
+    /* 
+        -----------------------------------------
+        ------- Se elimina toda la quantity -----
+        ------- de productos del carrito --------
+        -----------------------------------------
+    */
     //Se elimina toda la quantity de productos del carrito
     const handleRemove = (item) => {
         cart.splice(

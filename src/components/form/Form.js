@@ -12,13 +12,14 @@ const Form = () => {
         <form onSubmit={handlePurchase}>
             <div className="form_group_inline">
                 <div className='form-group'>
-                    <label className="form-label" htmlFor="formBasicEmail">
+                    <label className="form-label" htmlFor="name">
                         Nombre
                     </label>
                     <input 
                         type="text" 
                         placeholder="Nombre"
                         className="form-control"
+                        id='name'
                         value={name}
                         required
                         onChange={(e)=>{
@@ -27,13 +28,14 @@ const Form = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <label className="form-label" htmlFor="formBasicEmail">
+                    <label className="form-label" htmlFor="surname">
                         Apellido
                     </label>
                     <input 
                         type="text" 
                         placeholder="Apellido"
                         className="form-control"
+                        id='surname'
                         required
                         value={surname}
                         onChange={(e)=>{setSurname(e.target.value)}}
@@ -42,25 +44,27 @@ const Form = () => {
             </div>
             
             <div className="form-group">
-                <label className="form-label" htmlFor="formBasicEmail">
+                <label className="form-label" htmlFor="email">
                     Email
                 </label>
                 <input 
                     type="email" 
                     placeholder="juan@ejemplo.com" 
                     className="form-control"
+                    id='email'
                     required
                     value={email}
                     onChange={(e)=>{setEmail(e.target.value)}}
                 />
             </div>
             <div className="form-group">
-                <label className="form-label" htmlFor="formBasicEmail">
-                    Nombre
+                <label className="form-label" htmlFor="phoneNumber">
+                    Teléfono
                 </label>
                 <input 
                     type="text" 
                     placeholder="153153153" 
+                    id='phoneNumber'
                     required
                     className="form-control"
                     value={phoneNumber}
