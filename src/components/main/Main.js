@@ -13,6 +13,7 @@ const Main = () => {
             <Switch>
                 <Route component={ItemListContainer} path="/" exact />
                 <Route component={ItemListContainer} path="/categorias/:id" />
+                <Route component={ItemListContainer} path="/search/:input" />
                 <Route component={ItemDetailsContainer} path="/producto/:id" />
                 <Route component={Cart} path="/cart" />
             </Switch>

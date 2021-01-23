@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
+import { StoreContext } from '../../context/StoreContext'
 import { getFirestore } from '../../firebase'
 import { Link, NavLink } from 'react-router-dom'
 //BOOTSTRAP
@@ -16,6 +17,7 @@ import './navBar.scss';
 function AppNavBar() {
 
     const [categories, setCategories] = useState([])
+    const { search, setSearch } = useContext(StoreContext)
 
     useEffect(() => {
         const db = getFirestore()
@@ -58,9 +60,14 @@ function AppNavBar() {
                         : null
                     }
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
-                    <Button variant="outline-dark">Buscar</Button>
+                <Form inline onSubmit={(e)=>e.preventDefault()}>
+                    <FormControl 
+                        onChange={(e)=>setSearch(e.target.value.toUpperCase())} 
+                        type="text" 
+                        placeholder="Buscar" 
+                        className="mr-sm-2" 
+                    />
+                    <Link to={`/search/${search}`} className='btn btn-outline-dark'>Buscar</Link>
                 </Form>
             </Navbar.Collapse>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

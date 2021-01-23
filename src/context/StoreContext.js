@@ -271,6 +271,9 @@ const StoreProvider = ({children}) => {
         })
     }
 
+    const [search, setSearch] = useState('')
+    
+
     return(
         <Provider 
             value={{
@@ -288,10 +291,11 @@ const StoreProvider = ({children}) => {
                 handleCartDecrement, handleCartIncrement,
                 //purchase => cartTotal.js
                 handlePurchase, name, setName, surname, setSurname, email, setEmail, 
-                phoneNumber, setPhoneNumber, newPurchase
+                phoneNumber, setPhoneNumber, newPurchase,
+                setSearch, search
             }}
         >
-            {children}
+            { children }
         </Provider>
     )
 }

@@ -17,7 +17,6 @@ const Cart = () => {
             newPurchase ?
                 <NewPurchase />
                 : <div className='container cart_container'>
-            
                     {cart.length === 0 ? 
                         <EmptyCart />
                         : <>

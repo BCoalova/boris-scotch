@@ -13,7 +13,8 @@ const ItemListContainer = () => {
 
     const { loading, data } = useContext(StoreContext)
     //const [data, setData] = useState([])
-    const { id } = useParams()
+    const params = useParams()
+    const { id, input } = useParams()
 
     /* useEffect(() => {
         
@@ -42,13 +43,33 @@ const ItemListContainer = () => {
         setLoading(false)
     }, [id]) */
 
+    
+
     return(
         <div className="container item_list_container">
+            
             { loading ?
                 <Loading />
                 : data.map((product)=>{
                     return( id ?
-                        product.category === id ?
+                    product.category === id ?
+                        <ItemList
+                            key={product.id}
+                            item={{
+                                id: product.id,
+                                name: product.name,
+                                imageUrl: product.imageUrl,
+                                price: product.price,
+                                stock:product.stock
+                            }}
+                        />
+                        : null
+                    : input ?
+                        (product.name.toUpperCase().indexOf(input) > -1)
+                        ||
+                        (product.manufacturer.toUpperCase().indexOf(input) > -1)
+                        ||
+                        (product.description.toUpperCase().indexOf(input) > -1) ?
                         <ItemList
                             key={product.id}
                             item={{
@@ -69,7 +90,9 @@ const ItemListContainer = () => {
                             price: product.price,
                             stock:product.stock
                         }}
-                    />)
+                    />
+                    )
+                    
                 })
             }
         </div>
