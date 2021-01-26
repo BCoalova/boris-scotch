@@ -48,7 +48,7 @@ El proyecto debe contener dos colecciones:
 3. Remplaza los datos de configuración en el archivo  [firebase.js](https://github.com/BCoalova/mrace/blob/main/src/firebase.js) con los datos que te administra firebase
 4. Si no tenes instalado [nodejs](https://nodejs.org/), descargalo e instalalo
 5. Instala create-react-app, abre la consola y tipea ```npm install -g create-react-app``` 
-6. Abré la consola y tipea ```npm i``` 
+6. Navega dentro de la consola a la carpeta del proyecto y tipea ```npm i``` 
 7. Esperá que las dependencias mencionadas anteriormente se instalen correctamente
 8. En la misma consola ejecuta ```npm start```
 9. Espera que se compile y luego se abrirá el aplicativo en tu explorador predeterminado
