@@ -39,7 +39,7 @@ Para simular este comportamiento es necesario crear un nuevo Project dentro de f
 
 El proyecto debe contener dos colecciones: 
 
-**items** (podés encontrar la información de los items en [https://github.com/BCoalova/mrace/blob/main/public/data/data.json](data.json))  
+**items** (podés encontrar la información de los items en [https://github.com/BCoalova/mrace/blob/main/public/data/data.json](data.json)) 
 
 **categories** ```{ key: 'geforce', name: 'GeForce'  }, { key: 'amd', name: 'AMD' }``` 
 
@@ -52,3 +52,4 @@ El proyecto debe contener dos colecciones:
 6. En la misma consola ejecuta ```npm start```
 7. Espera que se compile y luego se abrirá el aplicativo en tu explorador predeterminado
 
+*Este aplicativo web es una simulación, por lo tanto la información proporcionada **no debe** ser considerada como real, tanto los precios, como la disponibilidad de stock han sido inventados para este proyecto. Es recomendable no proporcionar información real a la hora de completar el formulario de compra. Dicho formulario es parte de la simulación y no un compromiso de compra o reserva. Los articulos proporcionados por este aplicativo no están disponibles.*
