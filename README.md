@@ -35,7 +35,7 @@ React-bootstrap-icons | 1.1.0
 
 La base de firestore se utiliza tanto para traer la información de los productos y las categorias al aplicativo, como para generar ordenes de compra desde el aplicativo. 
 
-Para simular este comportamiento es necesario crear un nuevo Project dentro de firebase que se titule ```coderhouse-ecommerce``` 
+Para simular este comportamiento es necesario crear un nuevo Project dentro de firebase que se titule ```coderhouse-ecommerce``` y agregar una web app al mismo dentro de la configuración de firebase (guarda los datos de configuración, los vamos a utilizar más adelante)
 
 El proyecto debe contener dos colecciones: 
 
@@ -44,6 +44,7 @@ El proyecto debe contener dos colecciones:
 
 1. Descargá o clona el repositorio
 2. Creá un nuevo proyecto en firebase con las indicaciones e información mencionada anteriormente
+3. Remplaza los datos de configuración en el archivo  [https://github.com/BCoalova/mrace/blob/main/src/firebase.js](firebase.js) con los datos que te administra firebase
 3. Si no tenes instalado [nodejs](https://nodejs.org/), descargalo e instalalo
 4. Abré la consola y tipea ```npm i``` 
 5. Esperá que las dependencias mencionadas anteriormente se instalen correctamente
