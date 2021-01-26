@@ -281,15 +281,7 @@ const StoreProvider = ({children}) => {
         }
     }
 
-    /*
-        
-    */
-    
-
-    
-
     const [search, setSearch] = useState('')
-    
 
     return(
         <Provider 

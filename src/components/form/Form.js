@@ -67,7 +67,6 @@ const Form = () => {
                     className="form-control"
                     id='email2'
                     required
-                    /* value={email} (e)=>{setEmail(e.target.value)}*/
                     onChange={(e)=> setEmailVerification(e.target.value)}
                 />
                 {emailIsEqual ? null : <p className='not_equal_email'>Los correos deben coincidir</p>}
