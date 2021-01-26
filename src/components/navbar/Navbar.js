@@ -34,10 +34,6 @@ function AppNavBar() {
         })
     }, [])
 
-    useEffect(() => {
-        console.log(categories)
-    }, [categories])
-
     return(
         <Navbar fixed="top" expand="xl" className="justify-content-between">
             <Link to="/">

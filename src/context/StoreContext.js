@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect, useReducer} from 'react'
 import {getFirestore} from '../firebase'
-
+import firebase from "firebase/app";	
 export const StoreContext = createContext()
 const { Provider } = StoreContext
 
@@ -216,6 +216,9 @@ const StoreProvider = ({children}) => {
     const [name, setName] = useState('John')
     const [surname, setSurname] = useState('Wick')
     const [email, setEmail] = useState('jwick@thecontinental.com')
+    const [emailVerification, setEmailVerification] = useState('')
+    const [emailIsEqual, setEmailIsEqual] = useState(true)
+    
     const [phoneNumber, setPhoneNumber] = useState('31457866')
 
     const [newPurchase, setNewPurchase] = useState('')
@@ -224,6 +227,7 @@ const StoreProvider = ({children}) => {
     const handlePurchase = (e) => {
         e.preventDefault()
         
+        const date = firebase.firestore.Timestamp.fromDate(new Date())
         const purchaseData = {
             buyer : {
                 name,
@@ -232,44 +236,57 @@ const StoreProvider = ({children}) => {
                 email
             },
             items : cart,
+            date: date.toDate(),
             total : handleTotal()
         }
-        setNewPurchase(purchaseData)
-        const db = getFirestore()
-        const OrderCollection = db.collection("orders")
-        OrderCollection.add(purchaseData)
-        .then(( res )=>{
+        if (emailVerification === email) {
+            setEmailIsEqual(true)
+            setNewPurchase(purchaseData)
+            const db = getFirestore()
+            const OrderCollection = db.collection("orders")
+            OrderCollection.add(purchaseData)
+            .then(( res )=>{
 
-            OrderCollection.doc(res.id)
-            .get()
-            .then((querySnapshot)=>{
-                if (!querySnapshot.exists) {
-                    console.log('noexiste')
-                } else {
-                    setNewPurchase({
-                        id: querySnapshot.id,
-                        ...querySnapshot.data()
-                    })
-                    
-                }
-            })
-            .catch(err=>console.log(err))
+                OrderCollection.doc(res.id)
+                .get()
+                .then((querySnapshot)=>{
+                    if (!querySnapshot.exists) {
+                        console.log('noexiste')
+                    } else {
+                        setNewPurchase({
+                            id: querySnapshot.id,
+                            ...querySnapshot.data()
+                        })
+                        
+                    }
+                })
+                .catch(err=>console.log(err))
 
-            const Itemscollection = db.collection("items")
-            const batch = getFirestore().batch()
+                const Itemscollection = db.collection("items")
+                const batch = getFirestore().batch()
 
-            cart.forEach( p => {
-                batch.update(Itemscollection.doc(p.id),{stock:p.stockInStore - p.quantity})
+                cart.forEach( p => {
+                    batch.update(Itemscollection.doc(p.id),{stock:p.stockInStore - p.quantity})
+                })
+                batch.commit()
+                .then(()=>{
+                    console.log("Termino bien")
+                    setCart([])
+                    setCartWidgetACC(0)
+                })
+                .catch(err=>console.log(err))
             })
-            batch.commit()
-            .then(()=>{
-                console.log("Termino bien")
-                setCart([])
-                setCartWidgetACC(0)
-            })
-            .catch(err=>console.log(err))
-        })
+        } else {
+            setEmailIsEqual(false)
+        }
     }
+
+    /*
+        
+    */
+    
+
+    
 
     const [search, setSearch] = useState('')
     
@@ -291,7 +308,7 @@ const StoreProvider = ({children}) => {
                 handleCartDecrement, handleCartIncrement,
                 //purchase => cartTotal.js
                 handlePurchase, name, setName, surname, setSurname, email, setEmail, 
-                phoneNumber, setPhoneNumber, newPurchase,
+                phoneNumber, setPhoneNumber, newPurchase, setEmailVerification, emailIsEqual,
                 setSearch, search
             }}
         >

@@ -4,7 +4,7 @@ import { StoreContext } from '../../context/StoreContext'
 
 const Form = () => {
 
-    const {cart, name, setName, surname, setSurname, email, setEmail, phoneNumber, setPhoneNumber, 
+    const {cart, name, setName, surname, setSurname, email, setEmail, setEmailVerification, emailIsEqual, phoneNumber, setPhoneNumber, 
         handlePurchase} = useContext(StoreContext)
 
 
@@ -56,6 +56,21 @@ const Form = () => {
                     value={email}
                     onChange={(e)=>{setEmail(e.target.value)}}
                 />
+            </div>
+            <div className="form-group">
+                <label className="form-label" htmlFor="email2">
+                    Repite el email
+                </label>
+                <input 
+                    type="email" 
+                    placeholder="juan@ejemplo.com" 
+                    className="form-control"
+                    id='email2'
+                    required
+                    /* value={email} (e)=>{setEmail(e.target.value)}*/
+                    onChange={(e)=> setEmailVerification(e.target.value)}
+                />
+                {emailIsEqual ? null : <p className='not_equal_email'>Los correos deben coincidir</p>}
             </div>
             <div className="form-group">
                 <label className="form-label" htmlFor="phoneNumber">
