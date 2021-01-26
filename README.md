@@ -31,10 +31,22 @@ React-bootstrap-icons | 1.1.0
 
 ### Iniciar el proyecto
 
+#### Ten en cuenta que este proyecto utiliza una *Cloud Firestore* de [Google Firebase](https://firebase.google.com/) y los datos de acceso no están incluidos en el repositorio 
+
+La base de firestore se utiliza tanto para traer la información de los productos y las categorias al aplicativo, como para generar ordenes de compra desde el aplicativo. 
+
+Para simular este comportamiento es necesario crear un nuevo Project dentro de firebase que se titule ```coderhouse-ecommerce``` 
+
+El proyecto debe contener dos colecciones: 
+
+```items``` (podés encontrar la información de los items en [https://github.com/BCoalova/mrace/blob/main/public/data/data.json](data.json)) 
+```categories``` ```{ key: 'geforce', name: 'GeForce'  }, { key: 'amd', name: 'AMD' }``` 
+
 1. Descargá o clona el repositorio
-2. Si no tenes instalado [nodejs](https://nodejs.org/), descargalo e instalalo
-3. Abré la consola y tipea ```npm i``` 
-4. Esperá que las dependencias mencionadas anteriormente se instalen correctamente
-5. En la misma consola ejecuta ```npm start```
-6. Espera que se compile y luego se abrirá el aplicativo en tu explorador predeterminado
+2. Creá un nuevo proyecto en firebase con las indicaciones e información mencionada anteriormente
+3. Si no tenes instalado [nodejs](https://nodejs.org/), descargalo e instalalo
+4. Abré la consola y tipea ```npm i``` 
+5. Esperá que las dependencias mencionadas anteriormente se instalen correctamente
+6. En la misma consola ejecuta ```npm start```
+7. Espera que se compile y luego se abrirá el aplicativo en tu explorador predeterminado
 
