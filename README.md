@@ -39,13 +39,13 @@ Para simular este comportamiento es necesario crear un nuevo Project dentro de f
 
 El proyecto debe contener dos colecciones: 
 
-**items** (podés encontrar la información de los items en [https://github.com/BCoalova/mrace/blob/main/public/data/data.json](data.json)) 
+**items** podés encontrar la información de los items en [data.json](https://github.com/BCoalova/mrace/blob/main/public/data/data.json) 
 
 **categories** ```{ key: 'geforce', name: 'GeForce'  }, { key: 'amd', name: 'AMD' }``` 
 
 1. Descargá o clona el repositorio
 2. Creá un nuevo proyecto en firebase con las indicaciones e información mencionada anteriormente
-3. Remplaza los datos de configuración en el archivo  [https://github.com/BCoalova/mrace/blob/main/src/firebase.js](firebase.js) con los datos que te administra firebase
+3. Remplaza los datos de configuración en el archivo  [firebase.js](https://github.com/BCoalova/mrace/blob/main/src/firebase.js) con los datos que te administra firebase
 3. Si no tenes instalado [nodejs](https://nodejs.org/), descargalo e instalalo
 4. Abré la consola y tipea ```npm i``` 
 5. Esperá que las dependencias mencionadas anteriormente se instalen correctamente
